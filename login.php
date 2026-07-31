@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
   // --- 2. DATABASE CONNECTION ---
   $dbHost = 'localhost';
-  $dbName = 'lingoeflow_db';
+  $dbName = 'lingoflow_db';
   $dbUser = 'root';
   $dbPass = '';
 

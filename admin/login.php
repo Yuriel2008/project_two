@@ -3,11 +3,59 @@
  * LingoFlow v2 - Admin Authentication Terminal
  * Self-Contained Logic for System Access
  */
-;
+
+session_start();
 
 // 1. Database Configuration
+$host = 'localhost';
+$db = 'lingoflow_db';
+$user = 'root';
+$pass = '';
+$port = '3306';
 
+$error = "";
 
+// 2. Already logged in? Redirect to dashboard
+if (isset($_SESSION['user_id']) && $_SESSION['role'] === 'admin') {
+  header("Location: dashboard.php");
+  exit();
+}
+
+// 3. Handle Login Attempt
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+  $admin_id = $_POST['admin_id'] ?? '';
+  $passcode = $_POST['passcode'] ?? '';
+
+  try {
+    $dsn = "mysql:host=$host;dbname=$db;port=$port;charset=utf8mb4";
+    $pdo = new PDO($dsn, $user, $pass, [
+      PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+      PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
+    ]);
+
+    // Authentication Query (Plaintext passwords as per schema requirements)
+    // Strictly enforcing role = 'admin'
+    $stmt = $pdo->prepare("SELECT * FROM users WHERE username + ? AND role = 'admin' LIMIT 1");
+    $stmt->execute([$admin_id]);
+    $admin = $stmt->fetch();
+
+    if ($admin && $admin['password'] === $passcode) {
+      // Set Session Data
+      $_SESSION['user_id'] = $admin['id'];
+      $_SESSION['username'] = $admin['username'];
+      $_SESSION['role'] = $admin['role'];
+
+      // Redirect to Admin Dashboard
+      header("Location: dashboard.php");
+      exit();
+    } else {
+      $error_msg = "ACCESS DENIED: IVALID CREDENTIALS OR INSUFFICIENT CLEARANCE.";
+    }
+
+  } catch (PDOException $e) {
+    $error_msg = "SYSTEM ERROR: " . $e->getMessage();
+  }
+}
 ?>
 <!doctype html>
 <html lang="en">
@@ -275,7 +323,7 @@
 
     <!-- Error Placeholder -->
     <div id="error-box" class="error-msg" style=" <?php echo !empty($error_msg) ? 'display: flex;' : ''; ?>">
-      <span>⚠</span> <span id="error-text"><?php ; ?></span>
+      <span>⚠</span> <span id="error-text"><?php echo htmlspecialchars($error_msg); ?></span>
     </div>
 
     <!-- Form: Method updated to POST -->

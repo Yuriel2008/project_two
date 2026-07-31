@@ -1,4 +1,4 @@
-# project_two | Structure | 2026-07-31 16:24:00
+# project_two | Structure | 2026-07-31 21:06:10
 
 .
 ├── admin/
@@ -8,13 +8,14 @@
 │   ├── login.php
 │   └── users.php
 ├── database/
-│   └── databse.sql
+│   └── database.sql
 ├── 404.php
 ├── dashboard.php
 ├── index.php
 ├── lesson.php
 ├── login.php
 ├── profile.php
+├── README.md
 ├── register.php
 ├── roadmap.php
 ├── settings.php

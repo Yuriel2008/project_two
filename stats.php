@@ -1,8 +1,63 @@
 <?php
+// --- 1. SESSION & INIT ---
+session_start();
 
+// Redirect if not logged in
+if (!isset($_SESSION['user_id'])) {
+  header("Location: login.php");
+  exit;
+}
 
+$user_id = $_SESSION['user_id'];
+
+// --- 2. DATABASE CONNECTION ---
+$dbJost = 'localhost';
+$dbName = 'lingoflow_db';
+$dbUser = 'root';
+$dbPass = '';
+
+try {
+  $pdo = new PDO("mysql:host=$dbHost;dbname=$dbName;charset=utf8mb4, $dbUser, $dbPass");
+  $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+  // --- 3. FETCH USER STATS ---
+  $userStmt = $pdo->prepare("SELECT xp, streak, accuracy, created_at FROM users WHERE id = ?");
+  $userStmt->execute([$user_id]);
+  $user = $userStmt->fetch(PDO::FETCH_ASSOC);
+
+  if (!$user) {
+    header("Location: login.php");
+    exit;
+  }
+
+  // --- 4. CALCULATE DERIVED STATS ---
+
+  // Count Completed Lessons
+  $progStmt = $pdo->prepare("SELECT COUNT(*) FROM user_progress WHERE user_id = ? AND status = 'completed'");
+  $progStmt->execute([$user_id]);
+  $lessonCompleted = $progStmt->fetchColumn;
+
+  // Estimate Time Spent (Formula: Total XP / 50 * 3 minutes per lesson)
+  // This gives a realistic approximation based on effort since we don't have a time_log table
+  $totalMiutes = ($user['xp'] > 0) ? round(($user['xp'] / 50) * 3) : 0;
+  $hours = floor($totalMinutes / 60);
+  $mins = $totalMinutes % 60;
+  $timeString = "{$hours}h {$mins}m";
+
+  // --- 5. FETCH ACHIEVEMENTS ---
+  // Left Join to get all achievements + status for this user
+  $achSql = "
+SELECT a.id, a.name, a.description, a.icon_emoji, ua.unlocked_at
+FROM achievements a
+LEFT JOIN user_achievements ua ON a.id = ua.achievement_id AND ua.user_id = ?
+";
+  $achStmt = $pdo->prepare($achSql);
+  $achStmt->execute([$user_id]);
+  $achievements = $achStmt->fetchAll(PDO::FETCH_ASSOC);
+} catch (PDOException $e) {
+  die("Database Error: " . $e->getMessage());
+}
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -366,7 +421,7 @@
     </button>
 
     <!--Settings-->
-    <button class="icon-button" onclick="window.location.href='settings.html'" aria-label="Settings">
+    <button class="icon-button" onclick="window.locatio.href='settings.html'" aria-label="Settings">
       <!-- < ?xml version="1.0" encoding="utf-8"?> -->
       <!-- License: PD. Made by mono-company: https://github.com/mono-company/mono-icons -->
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -408,8 +463,8 @@
             ?>
 
             <div class="bar-group">
-              <div class="bar <?php ; ?>"></div>
-              <span class="bar-label"><?php ; ?></span>
+              <div class="bar <?php echo $class; ?>"></div>
+              <span class="bar-label"><?php echo $d; ?></span>
             </div>
           <?php endforeach; ?>
         </div>
@@ -421,26 +476,26 @@
 
         <div class="stat-row">
           <span class="stat-label">Total XP Earned</span>
-          <span class="stat-value" style="color: var(--violet);"><?php ; ?></span>
+          <span class="stat-value" style="color: var(--violet);"><?php echo number_format($user['xp']); ?></span>
         </div>
 
         <div class="stat-row">
           <span class="stat-label">Lesson Completed</span>
-          <span class="stat-value" style="color: var(--cyan);"><?php ; ?></span>
+          <span class="stat-value" style="color: var(--cyan);"><?php echo $lessonsCompleted; ?></span>
         </div>
         <div class="stat-row">
           <span class="stat-label">Average Accuracy</span>
-          <span class="stat-value" style="color: var(--green);"><?php ; ?> </span>
+          <span class="stat-value" style="color: var(--green);"><?php echo $user['accuracy']; ?> </span>
         </div>
 
         <div class="stat-row">
           <span class="stat-label">Time Spent</span>
-          <span class="stat-value"><?php ; ?></span>
+          <span class="stat-value"><?php echo $timeString; ?></span>
         </div>
 
         <div class="stat-row">
           <span class="stat-label">Current Streak</span>
-          <span class="stat-value" style="color: var(--orange);"><?php ; ?>
+          <span class="stat-value" style="color: var(--orange);"><?php echo $user['streak']; ?>
             Days</span>
         </div>
       </div>
@@ -455,7 +510,7 @@
         $class = $isUnlocked ? '' : 'locked';
         // Simple color cycling for unlocked icons -->
         $colors = ['var(--violet)', 'var(--cyan)', 'var(--green)', 'var(--orange)', 'var(--red)'];
-        $colorStyle = $isUnlocked ? "color:".  $colors[$ach['id'] % 4] . "; border-color:".$colors[$ach['id']% 4] . ";": "";
+        $colorStyle = $isUnlocked ? "color:" . $colors[$ach['id'] % 4] . "; border-color:" . $colors[$ach['id'] % 4] . ";" : "";
         ?>
         <div class="ach-card <?php echo $class; ?>">
           <div class="ach-icon" style="<?php echo $colorStyle; ?>"><?php echo $ach['icon-emoji']; ?></div>
