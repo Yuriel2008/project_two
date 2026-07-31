@@ -1,0 +1,21 @@
+# project_two | Structure | 2026-07-31 16:24:00
+
+.
+├── admin/
+│   ├── content.php
+│   ├── dashboard.php
+│   ├── grid-icon.svg
+│   ├── login.php
+│   └── users.php
+├── database/
+│   └── databse.sql
+├── 404.php
+├── dashboard.php
+├── index.php
+├── lesson.php
+├── login.php
+├── profile.php
+├── register.php
+├── roadmap.php
+├── settings.php
+└── stats.php
