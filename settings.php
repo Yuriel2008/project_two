@@ -81,7 +81,7 @@ try {
     if ($_POST['action'] === 'update_password') {
       $current_password = $_POST['current_password'] ?? '';
       $new_password = $_POST['new_password'] ?? '';
-      $confirm_password = $_POST['conifrm_password'] ?? '';
+      $confirm_password = $_POST['confirm_password'] ?? '';
 
       // Verify current password first
       $stmt = $pdo->prepare("SELECT password FROM users WHERE id = ?");
@@ -770,7 +770,7 @@ try {
       } else {
         // Close other open forms before opening a new one
         document
-          .querySelectorAll(".hidden-from")
+          .querySelectorAll(".hidden-form")
           .forEach((f) => f.classList.remove("active"));
         form.classList.remove("active");
 

@@ -612,7 +612,7 @@ LIMIT 1
         </div>
 
         <!--Numbers-->
-        <?php $st = getGridStatus('emotions', $rawStatuses); ?>
+        <?php $st = getGridStatus('numbers1', $rawStatuses); ?>
         <div class="glass-panel cat-box <?php echo ($st == 'locked') ?: ''; ?>" <?php if ($st !== 'locked'): ?>
             ?onclick="window.location.href='lesson.html?type=numbers1'" <?php endif; ?>>
           <div class="category-icon">🔢</div>

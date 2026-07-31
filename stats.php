@@ -11,13 +11,13 @@ if (!isset($_SESSION['user_id'])) {
 $user_id = $_SESSION['user_id'];
 
 // --- 2. DATABASE CONNECTION ---
-$dbJost = 'localhost';
+$dbHost = 'localhost';
 $dbName = 'lingoflow_db';
 $dbUser = 'root';
 $dbPass = '';
 
 try {
-  $pdo = new PDO("mysql:host=$dbHost;dbname=$dbName;charset=utf8mb4, $dbUser, $dbPass");
+  $pdo = new PDO("mysql:host=$dbHost;dbname=$dbName;charset=utf8mb4", $dbUser, $dbPass);
   $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
   // --- 3. FETCH USER STATS ---
@@ -35,11 +35,11 @@ try {
   // Count Completed Lessons
   $progStmt = $pdo->prepare("SELECT COUNT(*) FROM user_progress WHERE user_id = ? AND status = 'completed'");
   $progStmt->execute([$user_id]);
-  $lessonCompleted = $progStmt->fetchColumn;
+  $lessonCompleted = $progStmt->fetchColumn();
 
   // Estimate Time Spent (Formula: Total XP / 50 * 3 minutes per lesson)
   // This gives a realistic approximation based on effort since we don't have a time_log table
-  $totalMiutes = ($user['xp'] > 0) ? round(($user['xp'] / 50) * 3) : 0;
+  $totalMinutes = ($user['xp'] > 0) ? round(($user['xp'] / 50) * 3) : 0;
   $hours = floor($totalMinutes / 60);
   $mins = $totalMinutes % 60;
   $timeString = "{$hours}h {$mins}m";
@@ -513,7 +513,7 @@ LEFT JOIN user_achievements ua ON a.id = ua.achievement_id AND ua.user_id = ?
         $colorStyle = $isUnlocked ? "color:" . $colors[$ach['id'] % 4] . "; border-color:" . $colors[$ach['id'] % 4] . ";" : "";
         ?>
         <div class="ach-card <?php echo $class; ?>">
-          <div class="ach-icon" style="<?php echo $colorStyle; ?>"><?php echo $ach['icon-emoji']; ?></div>
+          <div class="ach-icon" style="<?php echo $colorStyle; ?>"><?php echo $ach['icon_emoji']; ?></div>
           <div class="ach-info">
             <h4><?php echo htmlspecialchars($ach['name']); ?></h4>
             <p><?php echo htmlspecialchars($ach['description']); ?></p>
