@@ -1,4 +1,4 @@
-# codebase | 17 files | 2026-08-01 16:16:38
+# codebase | 17 files | 2026-08-01 17:11:32
 
 // 404.php
 <?php 
@@ -662,11 +662,11 @@ try {
   <nav class="sidebar">
     <div class="logo-boxes">A</div>
     <!-- Dashboard -->
-    <button class="icon-button" onclick="window.location.href='dashboard.html'" aria-label="Dashboard">
+    <button class="icon-button" onclick="window.location.href='dashboard.php'" aria-label="Dashboard">
       <img src="grid-icon.svg" alt="Grid Layout Icon" width="24" height="24">
     </button>
     <!--Users-->
-    <button class="icon-button" onclick="window.location.href='users.html'" aria-label="Users">
+    <button class="icon-button" onclick="window.location.href='users.php'" aria-label="Users">
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <!-- Front Person -->
@@ -691,7 +691,7 @@ try {
       </svg>
     </button>
     <!--Logout-->
-    <button class="icon-button" onclick="window.location.href='../login.html'"
+    <button class="icon-button" onclick="window.location.href='../login.php'"
       style="margin-top: auto; color: var(--red);" aria-label="Logout">
       <svg width="24" height="24" viewBox="0 0 21 21" xmlns="http://www.w3.org/2000/svg">
         <g fill="none" fill-rule="evenodd" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
@@ -929,16 +929,16 @@ try {
       <p class="text-xs text-gray-400 mt-1">ADMIN CONSOLE v2.0</p>
     </div>
     <nav class="flex-1 px-4 space-y-2 mt-4">
-      <a href="dashboard.html" class="sidebar-link flex item-center p-3 text-cyan-400 bg-cyan-400/10 rounded-lg">
+      <a href="dashboard.php" class="sidebar-link flex item-center p-3 text-cyan-400 bg-cyan-400/10 rounded-lg">
         <i class="fas fa-chart-line mr-3"></i> Dashboard
       </a>
-      <a href="users.html" class="sidebar-link flex item-center p-3 text-cyan-400 rounded-lg transition-all">
+      <a href="users.php" class="sidebar-link flex item-center p-3 text-cyan-400 rounded-lg transition-all">
         <i class="fas fa-users mr-3"></i> Manage users
       </a>
-      <a href="content.html" class="sidebar-link flex item-center p-3 text-gray-400 rounded-lg transition-all">
+      <a href="content.php" class="sidebar-link flex item-center p-3 text-gray-400 rounded-lg transition-all">
         <i class="fas fa-book mr-3"></i> Lesson Content
       </a>
-      <a href="../logout.html" class="sidebar-link flex item-center p-3 text-red-400 rounded-lg transition-all">
+      <a href="../logout.php" class="sidebar-link flex item-center p-3 text-red-400 rounded-lg transition-all">
         <i class="fas fa-sign-out-alt mr-3"></i> Terminate Session
       </a>
     </nav>
@@ -1468,7 +1468,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
  */
 session_start();
 // 1. Session & Access Control
-if (!isset($_SESSION['user_id']) || !isset($_SESSION['role']) !== 'admin') {
+if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
   header('Location: ../login.php');
   exit();
 }
@@ -1784,7 +1784,7 @@ function getAvatarColor($char)
 <body>
   <nav class="sidebar">
     <div class="logo-boxes">A</div>
-    <button class="icon-button" onclick="window.location.href = 'dashboard.html'">
+    <button class="icon-button" onclick="window.location.href = 'dashboard.php'">
       <!-- License: MIT. Made by framework7io: https://github.com/framework7io/framework7-icons -->
       <img src="grid-icon.svg" alt="Grid Layout Icon" width="24" height="24">
     </button>
@@ -1800,7 +1800,7 @@ function getAvatarColor($char)
         <path d="M22 21a7 7 0 0 0-7-7" />
       </svg>
     </button>
-    <button class="icon-button" onclick="window.location.href = 'content.html'">
+    <button class="icon-button" onclick="window.location.href = 'content.php'">
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#231f20"
         stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <!-- The Paper Document Outline -->
@@ -1812,7 +1812,7 @@ function getAvatarColor($char)
         <line x1="8" y1="17" x2="16" y2="17" />
       </svg>
     </button>
-    <button class="icon-button" onclick="window.location.href = '../logout.html'">
+    <button class="icon-button" onclick="window.location.href = '../logout.php'">
       <!-- License: PD. Made by CoreyGinnivan: https://github.com/CoreyGinnivan/system-uicons/ -->
       <svg width="24" height="24" viewBox="0 0 21 21" xmlns="http://www.w3.org/2000/svg">
         <g fill="none" fill-rule="evenodd" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
@@ -2340,7 +2340,7 @@ try {
     <div class="logo-boxes">L</div>
     <!--1. Home (Active)-->
     <!-- the class  -->
-    <button class="icon-button active" aria-label="Home" onclick="window.location.href = 'dashboard.html'">
+    <button class="icon-button active" aria-label="Home" onclick="window.location.href = 'dashboard.php'">
       <!--This SVG family is important for icons.-->
       <!-- < ?xml version="1.0" encoding="utf-8"?> -->
       <!-- License: PD. Made by mono-company: https://github.com/mono-company/mono-icons -->
@@ -2351,7 +2351,7 @@ try {
       </svg>
     </button>
     <!--2. RoadMap-->
-    <button class="icon-button" aria-label="RoadMap" onclick="window.location.href = 'roadmap.html'">
+    <button class="icon-button" aria-label="RoadMap" onclick="window.location.href = 'roadmap.php'">
       <!-- < ?xml version="1.0" encoding="utf-8"?> -->
       <!-- License: PD. Made by mono-company: https://github.com/mono-company/mono-icons -->
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -2361,7 +2361,7 @@ try {
       </svg>
     </button>
     <!--3. Stats-->
-    <button class="icon-button" aria-label="Stats" onclick="window.location.href = 'stats.html'">
+    <button class="icon-button" aria-label="Stats" onclick="window.location.href = 'stats.php'">
       <!-- < ?xml version="1.0" encoding="utf-8"?> -->
       <!-- License: MIT. Made by Tienda Nube: https://github.com/TiendaNube/nimbus-icons -->
       <svg fill="#000000" width="24" height="24" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
@@ -2370,7 +2370,7 @@ try {
       </svg>
     </button>
     <!--4. Profile-->
-    <button class="icon-button" aria-label="Profile" onclick="window.location.href = 'profile.html'">
+    <button class="icon-button" aria-label="Profile" onclick="window.location.href = 'profile.php'">
       <!-- < ?xml version="1.0" encoding="utf-8"?> -->
       <!-- License: MIT. Made by basicons: https://basicons.xyz/ -->
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -2380,7 +2380,7 @@ try {
       </svg>
     </button>
     <!--Settings-->
-    <button class="icon-button" aria-label="Settings" onclick="window.location.href = 'settings.html'">
+    <button class="icon-button" aria-label="Settings" onclick="window.location.href = 'settings.php'">
       <!-- < ?xml version="1.0" encoding="utf-8"?> -->
       <!-- License: PD. Made by mono-company: https://github.com/mono-company/mono-icons -->
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -3171,7 +3171,7 @@ LIMIT 1
   <nav class="sidebar">
     <div class="logo-box">L</div>
     <!-- 1. Home (Active)-->
-    <button class="icon-button active" aria-label="Home" onclick="window.location.href = 'index.html'">
+    <button class="icon-button active" aria-label="Home" onclick="window.location.href = 'index.php'">
       <!--This SVG family is important for icons.-->
       <!-- < ?xml version="1.0" encoding="utf-8"?> -->
       <!-- License: PD. Made by mono-company: https://github.com/mono-company/mono-icons -->
@@ -3182,7 +3182,7 @@ LIMIT 1
       </svg>
     </button>
     <!-- 2. RoadMap-->
-    <button class="icon-button" aria-label="Roadmap" onclick="window.location.href = 'roadmap.html'">
+    <button class="icon-button" aria-label="Roadmap" onclick="window.location.href = 'roadmap.php'">
       <!-- < ?xml version="1.0" encoding="utf-8"?> -->
       <!-- License: PD. Made by mono-company: https://github.com/mono-company/mono-icons -->
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -3192,7 +3192,7 @@ LIMIT 1
       </svg>
     </button>
     <!-- 3. Stats-->
-    <button class="icon-button" aria-label="Stats" onclick="window.location.href = 'stats.html'">
+    <button class="icon-button" aria-label="Stats" onclick="window.location.href = 'stats.php'">
       <!-- < ?xml version="1.0" encoding="utf-8"?> -->
       <!-- License: MIT. Made by Tienda Nube: https://github.com/TiendaNube/nimbus-icons -->
       <svg fill="#000000" width="24" height="24" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
@@ -3201,7 +3201,7 @@ LIMIT 1
       </svg>
     </button>
     <!-- 4. Profile-->
-    <button class="icon-button" aria-label="Profile" onclick="window.location.href = 'profile.html'">
+    <button class="icon-button" aria-label="Profile" onclick="window.location.href = 'profile.php'">
       <!-- < ?xml version="1.0" encoding="utf-8"?> -->
       <!-- License: MIT. Made by basicons: https://basicons.xyz/ -->
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -3211,7 +3211,7 @@ LIMIT 1
       </svg>
     </button>
     <!-- 5. Settings-->
-    <button class="icon-button" aria-label="Settings" onclick="window.location.href = 'settings.html'">
+    <button class="icon-button" aria-label="Settings" onclick="window.location.href = 'settings.php'">
       <!-- < ?xml version="1.0" encoding="utf-8"?> -->
       <!-- License: PD. Made by mono-company: https://github.com/mono-company/mono-icons -->
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -3420,8 +3420,8 @@ try {
     $pdo->beginTransaction();
     try {
       // A. Award XP
-      $xp = $lessonMeta['xp_reward'];
-      $updateUser = $pdo->prepare("UPDATE users SET xp = xp + ?, last_login = NOW() WHERE user_id = ?");
+      $xp = $lessonMeta['xp_value'];
+      $updateUser = $pdo->prepare("UPDATE users SET xp = xp + ?, last_login = NOW() WHERE id = ?");
       $updateUser->execute([$xp, $user_id]);
       // B. Mark Current Lesson as Completed
       $upSql = "INSERT INTO user_progress (user_id, lesson_id, status, last_attempt)
@@ -3661,7 +3661,7 @@ try {
 </head>
 <body>
   <header class="top-bar">
-    <button onclick="window.location.href = 'index.html'" style="
+    <button onclick="window.location.href = 'index.php'" style="
           background: none;
           color: white;
           cursor: pointer;
@@ -3696,7 +3696,7 @@ try {
   </footer>
   <script>
     // 1. Get raw data from PHP
-    const questions = <?php echo json_encode($currentQuestions); ?>
+    const questions = <?php echo json_encode($currentQuestions); ?>;
     const lessonId = "<?php echo $lesson_id; ?>";
     let currentIndex = 0;
     let selectedOption = null;
@@ -3825,7 +3825,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $dbUser = 'root';
   $dbPass = '';
   try {
-    $pdo = new PDO("mysql:host=$dbHost;dbname=$dbName;charset-utf8mb4", $dbUser, $dbPass);
+    $pdo = new PDO("mysql:host=$dbHost;dbname=$dbName;charset=utf8mb4", $dbUser, $dbPass);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     // Check credentials (Plaintext as per requirements)
     // Allow login by Username OR Email
@@ -4094,7 +4094,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <!-- Footer -->
     <div class="register-link">
       New to LingoFlow?
-      <a href="register.html"><strong>Create Account</strong></a>
+      <a href="register.php"><strong>Create Account</strong></a>
     </div>
   </div>
   <script>
@@ -4136,7 +4136,7 @@ try {
   $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
   // --- 3. FETCH USER DATA ---
   $stmt = $pdo->prepare("SELECT username, email, xp, streak, accuracy, rank, created_at FROM users WHERE id = ?");
-  $stmt->execute(['id' => $user_id]);
+  $stmt->execute([$user_id]);
   $user = $stmt->fetch(PDO::FETCH_ASSOC);
   if (!$user) {
     session_destroy();
@@ -4520,7 +4520,7 @@ try {
     <div class="logo-boxes">L</div>
     <!--1. Home (Active)-->
     <!-- Every button class has button-one to five below this texts -->
-    <button class="icon-button" onclick="window.location.href = 'index.html'" aria-label="Home">
+    <button class="icon-button" onclick="window.location.href = 'index.php'" aria-label="Home">
       <!--This SVG family is important for icons.-->
       <!-- < ?xml version="1.0" encoding="utf-8"?> -->
       <!-- License: PD. Made by mono-company: https://github.com/mono-company/mono-icons -->
@@ -4531,7 +4531,7 @@ try {
       </svg>
     </button>
     <!--2. RoadMap-->
-    <button class="icon-button" onclick="window.location.href = 'roadmap.html'" aria-label="Roadmap">
+    <button class="icon-button" onclick="window.location.href = 'roadmap.php'" aria-label="Roadmap">
       <!-- < ?xml version="1.0" encoding="utf-8"?> -->
       <!-- License: PD. Made by mono-company: https://github.com/mono-company/mono-icons -->
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -4541,7 +4541,7 @@ try {
       </svg>
     </button>
     <!--3. Stats-->
-    <button class="icon-button" onclick="window.location.href = 'stats.html'" aria-label="Stats">
+    <button class="icon-button" onclick="window.location.href = 'stats.php'" aria-label="Stats">
       <!-- < ?xml version="1.0" encoding="utf-8"?> -->
       <!-- License: MIT. Made by Tienda Nube: https://github.com/TiendaNube/nimbus-icons -->
       <svg fill="#000000" width="24" height="24" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
@@ -4550,7 +4550,7 @@ try {
       </svg>
     </button>
     <!--4. Active Profile-->
-    <button class="icon-button active" onclick="window.location.href = 'profile.html'" aria-label="Profile">
+    <button class="icon-button active" onclick="window.location.href = 'profile.php'" aria-label="Profile">
       <!-- < ?xml version="1.0" encoding="utf-8"?> -->
       <!-- License: MIT. Made by basicons: https://basicons.xyz/ -->
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -4560,7 +4560,7 @@ try {
       </svg>
     </button>
     <!--Settings-->
-    <button class="icon-button" onclick="window.location.href = 'settings.html'" aria-label="Settings">
+    <button class="icon-button" onclick="window.location.href = 'settings.php'" aria-label="Settings">
       <!-- < ?xml version="1.0" encoding="utf-8"?> -->
       <!-- License: PD. Made by mono-company: https://github.com/mono-company/mono-icons -->
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -4676,7 +4676,7 @@ try {
           </div>
           <h3>Recent Achievements</h3>
           <div class="achievements-row">
-            <?php foreach ($allAchievements as $$ach):
+            <?php foreach ($allAchievements as $ach):
               $isUnlocked = in_array($ach['id'], $unlockIds);
               $class = $isUnlocked ? '' : 'locked';
               // <!-- // Simple color rotation based on ID for visuals, or default -->
@@ -4685,7 +4685,8 @@ try {
               ?>
               <div class="achviement-item" <?php echo $class; ?>>
                 <div class="ach-icon" style="<?php echo $isUnlocked ? "color: $color;" : ""; ?>">
-                  <?php echo $ach['icon_emoji']; ?></div>
+                  <?php echo $ach['icon_emoji']; ?>
+                </div>
                 <div class="ach-name"><?php echo htmlspecialchars($ach['name']); ?></div>
               </div>
             <?php endforeach; ?>
@@ -4985,7 +4986,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
         <div class="form-group">
           <label for="email">Email Address</label>
-          <input type="email" name="email" id="email" placeholderuser@example.com required autocomplete="email"
+          <input type="email" name="email" id="email" placeholder="user@example.com" required autocomplete="email"
             value="<?php echo isset($_POST['email']) ? htmlspecialchars($_POST['email']): ''; ?>" />
         </div>
         <div class="form-group">
@@ -5013,7 +5014,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       // Prevent default only to show animation/client validation first
       e.preventDefault();
       const form = document.getElementById("registerForm");
-      const button = document.querySelector("button-register");
+      const button = document.querySelector(".button-register");
       const pass = document.getElementById("password").value;
       const confirmPass = document.getElementById("confirm-password").value;
       // Reset Status Display via JS (visual only)
@@ -5355,7 +5356,7 @@ try {
     <div class="logo-boxes">L</div>
     <!--1. Home (Active)-->
     <!-- The classes were once called button-one to five -->
-    <button class="icon-button" onclick="window.location.href='index.html'" aria-label="Home">
+    <button class="icon-button" onclick="window.location.href='index.php'" aria-label="Home">
       <!--This SVG family is important for icons.-->
       <!-- < ?xml version="1.0" encoding="utf-8"?> -->
       <!-- License: PD. Made by mono-company: https://github.com/mono-company/mono-icons -->
@@ -5385,7 +5386,7 @@ try {
       </svg>
     </button>
     <!--4. Profile-->
-    <button class="icon-button" onclick="window.location.href='profile.html'" aria-label="Profile">
+    <button class="icon-button" onclick="window.location.href='profile.php'" aria-label="Profile">
       <!-- < ?xml version="1.0" encoding="utf-8"?> -->
       <!-- License: MIT. Made by basicons: https://basicons.xyz/ -->
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -5395,7 +5396,7 @@ try {
       </svg>
     </button>
     <!--Settings-->
-    <button class="icon-button" onclick="window.location.href='settings.html'" aria-label="Settings">
+    <button class="icon-button" onclick="window.location.href='settings.php'" aria-label="Settings">
       <!-- < ?xml version="1.0" encoding="utf-8"?> -->
       <!-- License: PD. Made by mono-company: https://github.com/mono-company/mono-icons -->
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -5941,7 +5942,7 @@ try {
   <nav class="sidebar">
     <div class="logo-boxes">L</div>
     <!--1. Home (Active)-->
-    <button class="icon-button" onclick="window.location.href = 'index.html'" aria-label="Home">
+    <button class="icon-button" onclick="window.location.href = 'index.php'" aria-label="Home">
       <!--This SVG family is important for icons.-->
       <!-- < ?xml version="1.0" encoding="utf-8"?> -->
       <!-- License: PD. Made by mono-company: https://github.com/mono-company/mono-icons -->
@@ -5952,7 +5953,7 @@ try {
       </svg>
     </button>
     <!--2. RoadMap-->
-    <button class="icon-button" onclick="window.location.href = 'roadmap.html'" aria-label="Roadmap">
+    <button class="icon-button" onclick="window.location.href = 'roadmap.php'" aria-label="Roadmap">
       <!-- < ?xml version="1.0" encoding="utf-8"?> -->
       <!-- License: PD. Made by mono-company: https://github.com/mono-company/mono-icons -->
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -5962,7 +5963,7 @@ try {
       </svg>
     </button>
     <!--3. Stats-->
-    <button class="icon-button" onclick="window.location.href = 'stats.html'" aria-label="Stats">
+    <button class="icon-button" onclick="window.location.href = 'stats.php'" aria-label="Stats">
       <!-- < ?xml version="1.0" encoding="utf-8"?> -->
       <!-- License: MIT. Made by Tienda Nube: https://github.com/TiendaNube/nimbus-icons -->
       <svg fill="#000000" width="24" height="24" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
@@ -5971,7 +5972,7 @@ try {
       </svg>
     </button>
     <!--4. Profile-->
-    <button class="icon-button" onclick="window.location.href = 'profile.html'" aria-label="Profile">
+    <button class="icon-button" onclick="window.location.href = 'profile.php'" aria-label="Profile">
       <!-- < ?xml version="1.0" encoding="utf-8"?> -->
       <!-- License: MIT. Made by basicons: https://basicons.xyz/ -->
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -5981,7 +5982,7 @@ try {
       </svg>
     </button>
     <!--Settings-->
-    <button class="icon-button active" onclick="window.location.href = 'settings.html'" aria-label="Settings">
+    <button class="icon-button active" onclick="window.location.href = 'settings.php'" aria-label="Settings">
       <!-- < ?xml version="1.0" encoding="utf-8"?> -->
       <!-- License: PD. Made by mono-company: https://github.com/mono-company/mono-icons -->
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -6481,7 +6482,7 @@ try {
   <nav class="sidebar">
     <div class="logo-boxes">L</div>
     <!--1. Home (Active)-->
-    <button class="icon-button" onclick="window.location.href='index.html'" aria-label="Home">
+    <button class="icon-button" onclick="window.location.href='index.php'" aria-label="Home">
       <!--This SVG family is important for icons.-->
       <!-- < ?xml version="1.0" encoding="utf-8"?> -->
       <!-- License: PD. Made by mono-company: https://github.com/mono-company/mono-icons -->
@@ -6492,7 +6493,7 @@ try {
       </svg>
     </button>
     <!--2. RoadMap-->
-    <button class="icon-button" onclick="window.location.href='roadmap.html'" aria-label="Roadmap">
+    <button class="icon-button" onclick="window.location.href='roadmap.php'" aria-label="Roadmap">
       <!-- < ?xml version="1.0" encoding="utf-8"?> -->
       <!-- License: PD. Made by mono-company: https://github.com/mono-company/mono-icons -->
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -6511,7 +6512,7 @@ try {
       </svg>
     </button>
     <!--4. Profile-->
-    <button class="icon-button" onclick="window.location.href='profile.html'" aria-label="Profile">
+    <button class="icon-button" onclick="window.location.href='profile.php'" aria-label="Profile">
       <!-- < ?xml version="1.0" encoding="utf-8"?> -->
       <!-- License: MIT. Made by basicons: https://basicons.xyz/ -->
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -6521,7 +6522,7 @@ try {
       </svg>
     </button>
     <!--Settings-->
-    <button class="icon-button" onclick="window.locatio.href='settings.html'" aria-label="Settings">
+    <button class="icon-button" onclick="window.locatio.href='settings.php'" aria-label="Settings">
       <!-- < ?xml version="1.0" encoding="utf-8"?> -->
       <!-- License: PD. Made by mono-company: https://github.com/mono-company/mono-icons -->
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -6593,7 +6594,7 @@ try {
     <!-- Achievements Section -->
     <h2 style="margin: 30px 0 15px 0;">Achievements</h2>
     <div class="achievement-grid">
-      <?php foreach ($achivements as $ach): ?>
+      <?php foreach ($achievements as $ach): ?>
         <?php
         $isUnlocked = $ach['unlocked'];
         $class = $isUnlocked ? '' : 'locked';

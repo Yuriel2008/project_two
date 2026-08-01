@@ -324,7 +324,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         <div class="form-group">
           <label for="email">Email Address</label>
-          <input type="email" name="email" id="email" placeholderuser@example.com required autocomplete="email"
+          <input type="email" name="email" id="email" placeholder="user@example.com" required autocomplete="email"
             value="<?php echo isset($_POST['email']) ? htmlspecialchars($_POST['email']): ''; ?>" />
         </div>
 
@@ -355,7 +355,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       e.preventDefault();
 
       const form = document.getElementById("registerForm");
-      const button = document.querySelector("button-register");
+      const button = document.querySelector(".button-register");
       const pass = document.getElementById("password").value;
       const confirmPass = document.getElementById("confirm-password").value;
 

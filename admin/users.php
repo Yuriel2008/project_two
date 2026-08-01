@@ -7,7 +7,7 @@
 session_start();
 
 // 1. Session & Access Control
-if (!isset($_SESSION['user_id']) || !isset($_SESSION['role']) !== 'admin') {
+if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
   header('Location: ../login.php');
   exit();
 }
@@ -374,7 +374,7 @@ function getAvatarColor($char)
 <body>
   <nav class="sidebar">
     <div class="logo-boxes">A</div>
-    <button class="icon-button" onclick="window.location.href = 'dashboard.html'">
+    <button class="icon-button" onclick="window.location.href = 'dashboard.php'">
       <!-- License: MIT. Made by framework7io: https://github.com/framework7io/framework7-icons -->
       <img src="grid-icon.svg" alt="Grid Layout Icon" width="24" height="24">
     </button>
@@ -391,7 +391,7 @@ function getAvatarColor($char)
         <path d="M22 21a7 7 0 0 0-7-7" />
       </svg>
     </button>
-    <button class="icon-button" onclick="window.location.href = 'content.html'">
+    <button class="icon-button" onclick="window.location.href = 'content.php'">
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#231f20"
         stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <!-- The Paper Document Outline -->
@@ -405,7 +405,7 @@ function getAvatarColor($char)
         <line x1="8" y1="17" x2="16" y2="17" />
       </svg>
     </button>
-    <button class="icon-button" onclick="window.location.href = '../logout.html'">
+    <button class="icon-button" onclick="window.location.href = '../logout.php'">
       <!-- License: PD. Made by CoreyGinnivan: https://github.com/CoreyGinnivan/system-uicons/ -->
       <svg width="24" height="24" viewBox="0 0 21 21" xmlns="http://www.w3.org/2000/svg">
         <g fill="none" fill-rule="evenodd" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"

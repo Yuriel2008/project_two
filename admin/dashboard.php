@@ -124,16 +124,16 @@ try {
     </div>
 
     <nav class="flex-1 px-4 space-y-2 mt-4">
-      <a href="dashboard.html" class="sidebar-link flex item-center p-3 text-cyan-400 bg-cyan-400/10 rounded-lg">
+      <a href="dashboard.php" class="sidebar-link flex item-center p-3 text-cyan-400 bg-cyan-400/10 rounded-lg">
         <i class="fas fa-chart-line mr-3"></i> Dashboard
       </a>
-      <a href="users.html" class="sidebar-link flex item-center p-3 text-cyan-400 rounded-lg transition-all">
+      <a href="users.php" class="sidebar-link flex item-center p-3 text-cyan-400 rounded-lg transition-all">
         <i class="fas fa-users mr-3"></i> Manage users
       </a>
-      <a href="content.html" class="sidebar-link flex item-center p-3 text-gray-400 rounded-lg transition-all">
+      <a href="content.php" class="sidebar-link flex item-center p-3 text-gray-400 rounded-lg transition-all">
         <i class="fas fa-book mr-3"></i> Lesson Content
       </a>
-      <a href="../logout.html" class="sidebar-link flex item-center p-3 text-red-400 rounded-lg transition-all">
+      <a href="../logout.php" class="sidebar-link flex item-center p-3 text-red-400 rounded-lg transition-all">
         <i class="fas fa-sign-out-alt mr-3"></i> Terminate Session
       </a>
     </nav>

@@ -44,8 +44,8 @@ try {
     try {
 
       // A. Award XP
-      $xp = $lessonMeta['xp_reward'];
-      $updateUser = $pdo->prepare("UPDATE users SET xp = xp + ?, last_login = NOW() WHERE user_id = ?");
+      $xp = $lessonMeta['xp_value'];
+      $updateUser = $pdo->prepare("UPDATE users SET xp = xp + ?, last_login = NOW() WHERE id = ?");
       $updateUser->execute([$xp, $user_id]);
 
       // B. Mark Current Lesson as Completed
@@ -323,7 +323,7 @@ try {
 
 <body>
   <header class="top-bar">
-    <button onclick="window.location.href = 'index.html'" style="
+    <button onclick="window.location.href = 'index.php'" style="
           background: none;
           color: white;
           cursor: pointer;
@@ -361,7 +361,7 @@ try {
   </footer>
   <script>
     // 1. Get raw data from PHP
-    const questions = <?php echo json_encode($currentQuestions); ?>
+    const questions = <?php echo json_encode($currentQuestions); ?>;
     const lessonId = "<?php echo $lesson_id; ?>";
 
     let currentIndex = 0;

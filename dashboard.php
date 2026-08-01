@@ -468,7 +468,7 @@ try {
 
     <!--1. Home (Active)-->
     <!-- the class  -->
-    <button class="icon-button active" aria-label="Home" onclick="window.location.href = 'dashboard.html'">
+    <button class="icon-button active" aria-label="Home" onclick="window.location.href = 'dashboard.php'">
       <!--This SVG family is important for icons.-->
       <!-- < ?xml version="1.0" encoding="utf-8"?> -->
       <!-- License: PD. Made by mono-company: https://github.com/mono-company/mono-icons -->
@@ -480,7 +480,7 @@ try {
     </button>
 
     <!--2. RoadMap-->
-    <button class="icon-button" aria-label="RoadMap" onclick="window.location.href = 'roadmap.html'">
+    <button class="icon-button" aria-label="RoadMap" onclick="window.location.href = 'roadmap.php'">
       <!-- < ?xml version="1.0" encoding="utf-8"?> -->
       <!-- License: PD. Made by mono-company: https://github.com/mono-company/mono-icons -->
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -491,7 +491,7 @@ try {
     </button>
 
     <!--3. Stats-->
-    <button class="icon-button" aria-label="Stats" onclick="window.location.href = 'stats.html'">
+    <button class="icon-button" aria-label="Stats" onclick="window.location.href = 'stats.php'">
       <!-- < ?xml version="1.0" encoding="utf-8"?> -->
       <!-- License: MIT. Made by Tienda Nube: https://github.com/TiendaNube/nimbus-icons -->
       <svg fill="#000000" width="24" height="24" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
@@ -500,7 +500,7 @@ try {
       </svg>
     </button>
     <!--4. Profile-->
-    <button class="icon-button" aria-label="Profile" onclick="window.location.href = 'profile.html'">
+    <button class="icon-button" aria-label="Profile" onclick="window.location.href = 'profile.php'">
       <!-- < ?xml version="1.0" encoding="utf-8"?> -->
       <!-- License: MIT. Made by basicons: https://basicons.xyz/ -->
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -511,7 +511,7 @@ try {
     </button>
 
     <!--Settings-->
-    <button class="icon-button" aria-label="Settings" onclick="window.location.href = 'settings.html'">
+    <button class="icon-button" aria-label="Settings" onclick="window.location.href = 'settings.php'">
       <!-- < ?xml version="1.0" encoding="utf-8"?> -->
       <!-- License: PD. Made by mono-company: https://github.com/mono-company/mono-icons -->
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

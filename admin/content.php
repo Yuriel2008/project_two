@@ -497,12 +497,12 @@ try {
     <div class="logo-boxes">A</div>
 
     <!-- Dashboard -->
-    <button class="icon-button" onclick="window.location.href='dashboard.html'" aria-label="Dashboard">
+    <button class="icon-button" onclick="window.location.href='dashboard.php'" aria-label="Dashboard">
       <img src="grid-icon.svg" alt="Grid Layout Icon" width="24" height="24">
     </button>
 
     <!--Users-->
-    <button class="icon-button" onclick="window.location.href='users.html'" aria-label="Users">
+    <button class="icon-button" onclick="window.location.href='users.php'" aria-label="Users">
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <!-- Front Person -->
@@ -532,7 +532,7 @@ try {
     </button>
 
     <!--Logout-->
-    <button class="icon-button" onclick="window.location.href='../login.html'"
+    <button class="icon-button" onclick="window.location.href='../login.php'"
       style="margin-top: auto; color: var(--red);" aria-label="Logout">
       <svg width="24" height="24" viewBox="0 0 21 21" xmlns="http://www.w3.org/2000/svg">
         <g fill="none" fill-rule="evenodd" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"

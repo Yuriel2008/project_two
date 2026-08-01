@@ -378,7 +378,7 @@ try {
     <div class="logo-boxes">L</div>
 
     <!--1. Home (Active)-->
-    <button class="icon-button" onclick="window.location.href='index.html'" aria-label="Home">
+    <button class="icon-button" onclick="window.location.href='index.php'" aria-label="Home">
       <!--This SVG family is important for icons.-->
       <!-- < ?xml version="1.0" encoding="utf-8"?> -->
       <!-- License: PD. Made by mono-company: https://github.com/mono-company/mono-icons -->
@@ -390,7 +390,7 @@ try {
     </button>
 
     <!--2. RoadMap-->
-    <button class="icon-button" onclick="window.location.href='roadmap.html'" aria-label="Roadmap">
+    <button class="icon-button" onclick="window.location.href='roadmap.php'" aria-label="Roadmap">
       <!-- < ?xml version="1.0" encoding="utf-8"?> -->
       <!-- License: PD. Made by mono-company: https://github.com/mono-company/mono-icons -->
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -410,7 +410,7 @@ try {
       </svg>
     </button>
     <!--4. Profile-->
-    <button class="icon-button" onclick="window.location.href='profile.html'" aria-label="Profile">
+    <button class="icon-button" onclick="window.location.href='profile.php'" aria-label="Profile">
       <!-- < ?xml version="1.0" encoding="utf-8"?> -->
       <!-- License: MIT. Made by basicons: https://basicons.xyz/ -->
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -421,7 +421,7 @@ try {
     </button>
 
     <!--Settings-->
-    <button class="icon-button" onclick="window.locatio.href='settings.html'" aria-label="Settings">
+    <button class="icon-button" onclick="window.locatio.href='settings.php'" aria-label="Settings">
       <!-- < ?xml version="1.0" encoding="utf-8"?> -->
       <!-- License: PD. Made by mono-company: https://github.com/mono-company/mono-icons -->
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -504,7 +504,7 @@ try {
     <!-- Achievements Section -->
     <h2 style="margin: 30px 0 15px 0;">Achievements</h2>
     <div class="achievement-grid">
-      <?php foreach ($achivements as $ach): ?>
+      <?php foreach ($achievements as $ach): ?>
         <?php
         $isUnlocked = $ach['unlocked'];
         $class = $isUnlocked ? '' : 'locked';

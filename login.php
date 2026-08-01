@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $dbPass = '';
 
   try {
-    $pdo = new PDO("mysql:host=$dbHost;dbname=$dbName;charset-utf8mb4", $dbUser, $dbPass);
+    $pdo = new PDO("mysql:host=$dbHost;dbname=$dbName;charset=utf8mb4", $dbUser, $dbPass);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     // Check credentials (Plaintext as per requirements)
@@ -330,7 +330,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <!-- Footer -->
     <div class="register-link">
       New to LingoFlow?
-      <a href="register.html"><strong>Create Account</strong></a>
+      <a href="register.php"><strong>Create Account</strong></a>
     </div>
   </div>
   <script>
