@@ -294,7 +294,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <!-- Form -->
     <!-- Method POST, Action Self -->
-    <form id="longinForm" method="POST" onsubmit="handleLogin(event)">
+    <form id="loginForm" method="POST" onsubmit="handleLogin(event)">
       <div class="form-group">
         <label for="username">Username / Email</label>
         <div class="input-wrapper">

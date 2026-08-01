@@ -421,7 +421,7 @@ try {
     </button>
 
     <!--Settings-->
-    <button class="icon-button" onclick="window.locatio.href='settings.php'" aria-label="Settings">
+    <button class="icon-button" onclick="window.location.href='settings.php'" aria-label="Settings">
       <!-- < ?xml version="1.0" encoding="utf-8"?> -->
       <!-- License: PD. Made by mono-company: https://github.com/mono-company/mono-icons -->
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

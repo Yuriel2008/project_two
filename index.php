@@ -39,10 +39,11 @@ try {
   // --- 4. FETCH NEXT LESSON ---
   // Join lessons with user_progress to find the current 'active' lesson
   $lessonStmt = $pdo->prepare("
-SELECT l.id, l.name, l.category
+SELECT l.id, l.title, l.category
 FROM lessons l
 JOIN user_progress up ON l.id = up.lesson_id
 WHERE up.user_id = ? AND up.status= 'active'
+ORDER BY l.sort_order ASC
 LIMIT 1
 ");
   $lessonStmt->execute([$userId]);
@@ -61,7 +62,7 @@ LIMIT 1
   // --- 5. FETCH STATUSES FOR GRID ---
   // specific IDs used in the HTML grid
   $gridIds = ['emotions', 'numbers1', 'respect', 'food'];
-  $placeholders = str_repeat('?', count($gridIds) - 1);
+  $placeholders = str_repeat('?', count($gridIds) - 1) . '?';
 
   $gridStmt = $pdo->prepare("SELECT lesson_id, status FROM user_progress WHERE user_id = ? AND lesson_id IN ($placeholders)");
   $gridParams = array_merge([$userId], $gridIds);
@@ -571,9 +572,11 @@ LIMIT 1
       </div>
 
       <!--Daily Goal (Simulated for Prototype)-->
-      <?php //<!-- Simulating daily progress based on total XP to show movement-->
+      <?php 
+      //<!-- Simulating daily progress based on total XP to show movement-->
       $dailyTarget = 100;
-      $dailyProgress = ($dailyProgress / $dailyTarget) * 100;
+      $dailyProgress = $user['xp'] % 100;
+      $dailyPercent = ($dailyProgress / $dailyTarget) * 100;
       ?>
       <div class="glass-panel goal-card">
         <h3>Daily Goal</h3>

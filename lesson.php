@@ -56,12 +56,13 @@ try {
 
       // C. Unlock Next Lesson
       $currentOrder = $lessonMeta['sort_order'];
-      $nextLessonStmt = $pdo->prepare("SELECT id FROM lessons WHERE sort_order > ? ORDER BY dort_order ASC LIMIT 1");
+      $nextLessonStmt = $pdo->prepare("SELECT id FROM lessons WHERE sort_order > ? ORDER BY sort_order ASC LIMIT 1");
       $nextLessonStmt->execute([$currentOrder]);
       $nextLessonId = $nextLessonStmt->fetch(PDO::FETCH_COLUMN);
 
       if ($nextLessonId) {
-        $unlockSql = "INSERT INTO user_progress (user_id, lesson_id, status) VALUES (?, ?, 'active) 
+        $unlockSql = "INSERT INTO user_progress (user_id, lesson_id, status) 
+        VALUES (?, ?, 'active') 
       ON DUPLICATE KEY UPDATE status = IF(status = 'locked', 'active', status)";
         $pdo->prepare($unlockSql)->execute([$user_id, $nextLessonId]);
       }

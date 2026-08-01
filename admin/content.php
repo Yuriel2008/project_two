@@ -25,7 +25,7 @@ try {
   // DELETE LESSON
   if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'delete') {
     $idToDelete = $_POST['id'];
-    $deleteStmt = $pdo->prepare("DELETE FROM lessons WHERE id = :?");
+    $deleteStmt = $pdo->prepare("DELETE FROM lessons WHERE id = ?");
     $deleteStmt->execute(['id' => $lessonId]);
     header("Location: content.php");// Refresh to clear post data
     exit;
@@ -40,7 +40,7 @@ try {
     $newOrder = $_POST['sort_order'];
 
     $addStmt = $pdo->prepare("INSERT INTO lessons (id, title, category, description, xp_value, sort_order) VALUES (?, ?, ?, 'New content', ?, ?)");
-    $addtStmt->execute([
+    $addStmt->execute([
       $newId,
       $newTitle,
       $newCat,
