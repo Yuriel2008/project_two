@@ -1,4 +1,4 @@
-# codebase | 17 files | 2026-08-01 19:26:05
+# codebase | 17 files | 2026-08-01 20:13:55
 
 // 404.php
 <?php 
@@ -5440,11 +5440,9 @@ try {
                 <span>���</span> Complete
               </div>
             <?php elseif ($status === 'active'): ?>
-              <?php ?>
               <a href="lesson.html?type=<?php echo htmlspecialchars($item['id']); ?>" class="button-start">Continue
                 &nbsp;</a>
             <?php else: //locked ?>
-              <?php ?>
               <div class="status-text">
                 <span>����</span> Locked
               </div>
@@ -6601,7 +6599,7 @@ try {
     <div class="achievement-grid">
       <?php foreach ($achievements as $ach): ?>
         <?php
-        $isUnlocked = $ach['unlocked'];
+        $isUnlocked = !empty(['unlock_at']);
         $class = $isUnlocked ? '' : 'locked';
         // Simple color cycling for unlocked icons -->
         $colors = ['var(--violet)', 'var(--cyan)', 'var(--green)', 'var(--orange)', 'var(--red)'];

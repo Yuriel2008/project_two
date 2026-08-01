@@ -506,7 +506,7 @@ try {
     <div class="achievement-grid">
       <?php foreach ($achievements as $ach): ?>
         <?php
-        $isUnlocked = $ach['unlocked'];
+        $isUnlocked = !empty(['unlock_at']);
         $class = $isUnlocked ? '' : 'locked';
         // Simple color cycling for unlocked icons -->
         $colors = ['var(--violet)', 'var(--cyan)', 'var(--green)', 'var(--orange)', 'var(--red)'];

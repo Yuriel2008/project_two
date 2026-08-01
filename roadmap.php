@@ -437,11 +437,9 @@ try {
                 <span>✓</span> Complete
               </div>
             <?php elseif ($status === 'active'): ?>
-              <?php ?>
               <a href="lesson.html?type=<?php echo htmlspecialchars($item['id']); ?>" class="button-start">Continue
                 &nbsp;</a>
             <?php else: //locked ?>
-              <?php ?>
               <div class="status-text">
                 <span>🔒</span> Locked
               </div>
