@@ -58,6 +58,7 @@ CREATE TABLE `user_progress` (
     `lesson_id` VARCHAR(50) NOT NULL,
     `score` INT(11) DEFAULT NULL,
     `last_attempt` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    `status` ENUM('locked', 'active', 'completed') NOT NULL DEFAULT 'locked',
     PRIMARY KEY (`id`),
     UNIQUE KEY `user_lesson_unique` (`user_id`, `lesson_id`),
     KEY `user_id` (`user_id`),
