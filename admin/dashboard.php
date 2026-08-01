@@ -293,7 +293,7 @@ try {
                   <i class="fas <?php echo ($lesson['type'] == 'quiz' ? 'fa-vial' : 'fa-book-open'); ?>"></i>
                 </div>
                 <div>
-                  <p class="font-bold text-sm"><?php ; ?></p>
+                  <p class="font-bold text-sm"><?php echo htmlspecialchars($lesson['title']); ?></p>
                   <p class="text-[10px] text-gray-500 uppercase tracking-tighter">
                     ID: #00<?php echo $lesson['id']; ?> | Type <?php echo htmlspecialchars($lesson['type']); ?>
                   </p>

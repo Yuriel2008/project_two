@@ -361,8 +361,8 @@ try {
   </footer>
   <script>
     // 1. Get raw data from PHP
-    const questions = php;
-    const lessonId = "<?php ; ?>";
+    const questions = <?php echo json_encode($currentQuestions); ?>
+    const lessonId = "<?php echo $lesson_id; ?>";
 
     let currentIndex = 0;
     let selectedOption = null;

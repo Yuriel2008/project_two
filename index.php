@@ -3,7 +3,7 @@ session_start();
 // --- 1. SESSION & AUTHENTICATION or Code that stops being static class and save progress in a genuine way ---
 
 // Redirect to login if session is missing
-if (!isset($SESSION['user_id'])) {
+if (!isset($_SESSION['user_id'])) {
   header('Location: login.html');
   exit;
 }

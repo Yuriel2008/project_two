@@ -614,7 +614,7 @@ try {
       <div class="glass-panel goal-card">
         <h3>Daily Goal</h3>
         <div class="progress-track">
-          <div class="progress-fill" style php ; ?%;></div>
+          <div class="progress-fill" style="<?php echo $dailyPercent; ?>%;"></div>
         </div>
         <div class="goal-text">
           <span><?php echo $dailyProgress; ?>XP</span>

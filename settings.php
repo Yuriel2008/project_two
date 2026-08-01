@@ -625,7 +625,7 @@ try {
     </header>
 
     <?php if (!empty($statusMsg)): ?>
-      <div class="status-msg <?php ; ?>">
+      <div class="status-msg <?php echo $statusType; ?>">
         <?php echo $statusType === 'success' ? '<span>✅</span>' : '<span>⚠️</span>'; ?>
         <span><?php echo htmlspecialchars($statusMsg); ?></span>
       </div>

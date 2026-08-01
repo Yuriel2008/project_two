@@ -35,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Authentication Query (Plaintext passwords as per schema requirements)
     // Strictly enforcing role = 'admin'
-    $stmt = $pdo->prepare("SELECT * FROM users WHERE username + ? AND role = 'admin' LIMIT 1");
+    $stmt = $pdo->prepare("SELECT * FROM users WHERE username = ? AND role = 'admin' LIMIT 1");
     $stmt->execute([$admin_id]);
     $admin = $stmt->fetch();
 
