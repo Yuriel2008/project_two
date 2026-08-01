@@ -327,7 +327,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </div>
 
     <!-- Form: Method updated to POST -->
-    <form id="adminLoginForm" method="POST" action="login.html">
+    <form id="adminLoginForm" method="POST" action="login.php">
       <div class="form-group">
         <label for="admin-id">Admin ID</label>
         <div class="input-wrapper">

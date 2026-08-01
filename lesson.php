@@ -428,7 +428,7 @@ try {
         b.onclick = () => {
           if (isAnswered) return;
           document
-            .querySelectorAll("option-button")
+            .querySelectorAll(".option-buttons")
             .forEach((el) => el.classList.remove("selected"));
           b.classList.add("selected");
           selectedOption = b;
@@ -458,7 +458,7 @@ try {
           button.style.opacity = "0.5";
           button.style.pointerEvents = "none";
           window.location.replace(
-            `lesson.html?type=${lessonId}&action=complete`,
+            `lesson.php?type=${lessonId}&action=complete`,
           );
         }
         return;

@@ -544,13 +544,13 @@ LIMIT 1
       <!-- Main Activity -->
       <div class="glass-panel continue-card">
         <h2 style="margin: 0; z-index: 1">Continue Learning</h2>
-        <?php if ($nextLesso['id'] !== 'roadmap'): ?>
+        <?php if ($nextLesson['id'] !== 'roadmap'): ?>
           <p style="color: var(--text-muted); margin: 10px 0 0 0; z-index: 1">
             Next up:
             <strong><?php echo htmlspecialchars($nextLesson['title']); ?></strong>(<?php echo htmlspecialchars($nextLesson['category']); ?>)
           </p>
           <button class="button-primary"
-            onclick="window.location.href = 'lesson.html?type=<?php echo htmlspecialchars($nextLesson['id']); ?>'">
+            onclick="window.location.href = 'lesson.php?type=<?php echo htmlspecialchars($nextLesson['id']); ?>'">
             <span>Resume Path</span>
             <!-- < ?xml version="1.0" encoding="utf-8"?> -->
             <!-- License: PD. Made by Mary Akveo: https://maryakveo.com/ -->
@@ -565,7 +565,7 @@ LIMIT 1
           <p style="color: var(--text-muted); margin: 10px 0 0 0; z-index: 1">
             You're up to date! Review completed lessons?
           </p>
-          <button class="button-primary" onclick="window.location.href = 'roadmap.html'">
+          <button class="button-primary" onclick="window.location.href = 'roadmap.php'">
             <span>View Roadmap</span>
           </button>
         <?php endif; ?>
@@ -603,13 +603,13 @@ LIMIT 1
     <div>
       <div class="grid-header">
         <h3 style="margin: 0">Quick Practice</h3>
-        <a href="roadmap.html" style="color: var(--violet); text-decoration: none; font-size: 14px">View All &rarr;</a>
+        <a href="roadmap.php" style="color: var(--violet); text-decoration: none; font-size: 14px">View All &rarr;</a>
       </div>
       <div class="categories-grid">
         <!-- Happy/Emotions-->
         <?php $st = getGridStatus('emotions', $rawStatuses); ?>
         <div class="glass-panel cat-box <?php echo ($st == 'locked') ? 'locked' : ''; ?>" <?php if ($st !== 'locked'):
-                   ?>onclick="window.location.href='lesson.html?type=emotions'" <?php endif; ?>>
+                   ?>onclick="window.location.href='lesson.php?type=emotions'" <?php endif; ?>>
           <div class="category-icon">🙂</div>
           <strong>Emotions</strong>
         </div>
@@ -617,7 +617,7 @@ LIMIT 1
         <!--Numbers-->
         <?php $st = getGridStatus('numbers1', $rawStatuses); ?>
         <div class="glass-panel cat-box <?php echo ($st == 'locked') ?: ''; ?>" <?php if ($st !== 'locked'): ?>
-            ?onclick="window.location.href='lesson.html?type=numbers1'" <?php endif; ?>>
+            ?onclick="window.location.href='lesson.php?type=numbers1'" <?php endif; ?>>
           <div class="category-icon">🔢</div>
           <strong>Numbers</strong>
         </div>
@@ -625,7 +625,7 @@ LIMIT 1
         <!--Respect/Greetings-->
         <?php $st = getGridStatus('respect', $rawStatuses); ?>
         <div class="glass-panel cat-box <?php echo ($st == 'locked') ? 'locked' : ''; ?>" <?php if ($st != 'locked'): ?>
-            onclick="window.location.href='lesson.html?type=respect'" <?php endif; ?>>
+            onclick="window.location.href='lesson.php?type=respect'" <?php endif; ?>>
           <div class="category-icon">🤝</div>
           <strong>Greetings</strong>
         </div>
@@ -633,7 +633,7 @@ LIMIT 1
         <!--Food-->
         <?php $st = getGridStatus('food', $rawStatuses); ?>
         <div class="glass-panel cat-box <?php echo ($st == 'locked') ? 'locked' : ''; ?>" <?php if ($st !== 'locked'): ?>
-            onclick="window.location.href='lesson.html?type=food'" <?php endif; ?>>
+            onclick="window.location.href='lesson.php?type=food'" <?php endif; ?>>
           <div class="category-icon">🍔</div>
           <strong>Food</strong>
         </div>

@@ -1,4 +1,4 @@
-# codebase | 17 files | 2026-08-01 20:40:34
+# codebase | 17 files | 2026-08-01 21:09:10
 
 // 404.php
 <?php 
@@ -262,7 +262,7 @@ try {
   // ADD LESSON
   if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'add') {
     $newId = $_POST['lesson_id'];
-    $newtitle = $_POST['title'];
+    $newTitle = $_POST['title'];
     $newCat = $_POST['category'];
     $newXp = $_POST['xp'];
     $newOrder = $_POST['sort_order'];
@@ -279,7 +279,7 @@ try {
   }
   // --- 4. FETCH DATA ---
   // Stats
-  $statsStmt = $pdo->query("SELECT COUNT(*) as SUM(xp_value) as total_xp FROM lessons");
+  $statsStmt = $pdo->query("SELECT COUNT(*) as count, SUM(xp_value) as total_xp FROM lessons");
   $stats = $statsStmt->fetch(PDO::FETCH_ASSOC);
   $totalLessons = $stats['count'];
   $totalXP = $stats['total_xp'];
@@ -288,7 +288,7 @@ try {
   $sql = "SELECT * FROM lessons";
   $params = [];
   if ($search) {
-    $sql .= " WHERE title LIKE :search OR category LIKE ?";
+    $sql .= " WHERE title LIKE ? OR category LIKE ?";
     $params = ["%$search%", "%$search%"];
   }
   $sql .= " ORDER BY sort_order ASC";
@@ -1409,7 +1409,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       <span>âš </span> <span id="error-text"><?php echo htmlspecialchars($error_msg); ?></span>
     </div>
     <!-- Form: Method updated to POST -->
-    <form id="adminLoginForm" method="POST" action="login.html">
+    <form id="adminLoginForm" method="POST" action="login.php">
       <div class="form-group">
         <label for="admin-id">Admin ID</label>
         <div class="input-wrapper">
@@ -1509,7 +1509,7 @@ try {
     $query_str .= " WHERE username LIKE ? OR email LIKE ?";
     $params = ["%$search%", "%$search%"];
   }
-  $query_str .= "ORDER BY id DESC";
+  $query_str .= " ORDER BY id DESC";
   $stmt = $pdo->prepare($query_str);
   $stmt->execute($params);
   $users_list = $stmt->fetchAll();
@@ -3293,13 +3293,13 @@ LIMIT 1
       <!-- Main Activity -->
       <div class="glass-panel continue-card">
         <h2 style="margin: 0; z-index: 1">Continue Learning</h2>
-        <?php if ($nextLesso['id'] !== 'roadmap'): ?>
+        <?php if ($nextLesson['id'] !== 'roadmap'): ?>
           <p style="color: var(--text-muted); margin: 10px 0 0 0; z-index: 1">
             Next up:
             <strong><?php echo htmlspecialchars($nextLesson['title']); ?></strong>(<?php echo htmlspecialchars($nextLesson['category']); ?>)
           </p>
           <button class="button-primary"
-            onclick="window.location.href = 'lesson.html?type=<?php echo htmlspecialchars($nextLesson['id']); ?>'">
+            onclick="window.location.href = 'lesson.php?type=<?php echo htmlspecialchars($nextLesson['id']); ?>'">
             <span>Resume Path</span>
             <!-- < ?xml version="1.0" encoding="utf-8"?> -->
             <!-- License: PD. Made by Mary Akveo: https://maryakveo.com/ -->
@@ -3314,7 +3314,7 @@ LIMIT 1
           <p style="color: var(--text-muted); margin: 10px 0 0 0; z-index: 1">
             You're up to date! Review completed lessons?
           </p>
-          <button class="button-primary" onclick="window.location.href = 'roadmap.html'">
+          <button class="button-primary" onclick="window.location.href = 'roadmap.php'">
             <span>View Roadmap</span>
           </button>
         <?php endif; ?>
@@ -3350,34 +3350,34 @@ LIMIT 1
     <div>
       <div class="grid-header">
         <h3 style="margin: 0">Quick Practice</h3>
-        <a href="roadmap.html" style="color: var(--violet); text-decoration: none; font-size: 14px">View All &rarr;</a>
+        <a href="roadmap.php" style="color: var(--violet); text-decoration: none; font-size: 14px">View All &rarr;</a>
       </div>
       <div class="categories-grid">
         <!-- Happy/Emotions-->
         <?php $st = getGridStatus('emotions', $rawStatuses); ?>
         <div class="glass-panel cat-box <?php echo ($st == 'locked') ? 'locked' : ''; ?>" <?php if ($st !== 'locked'):
-                   ?>onclick="window.location.href='lesson.html?type=emotions'" <?php endif; ?>>
+                   ?>onclick="window.location.href='lesson.php?type=emotions'" <?php endif; ?>>
           <div class="category-icon">����</div>
           <strong>Emotions</strong>
         </div>
         <!--Numbers-->
         <?php $st = getGridStatus('numbers1', $rawStatuses); ?>
         <div class="glass-panel cat-box <?php echo ($st == 'locked') ?: ''; ?>" <?php if ($st !== 'locked'): ?>
-            ?onclick="window.location.href='lesson.html?type=numbers1'" <?php endif; ?>>
+            ?onclick="window.location.href='lesson.php?type=numbers1'" <?php endif; ?>>
           <div class="category-icon">����</div>
           <strong>Numbers</strong>
         </div>
         <!--Respect/Greetings-->
         <?php $st = getGridStatus('respect', $rawStatuses); ?>
         <div class="glass-panel cat-box <?php echo ($st == 'locked') ? 'locked' : ''; ?>" <?php if ($st != 'locked'): ?>
-            onclick="window.location.href='lesson.html?type=respect'" <?php endif; ?>>
+            onclick="window.location.href='lesson.php?type=respect'" <?php endif; ?>>
           <div class="category-icon">����</div>
           <strong>Greetings</strong>
         </div>
         <!--Food-->
         <?php $st = getGridStatus('food', $rawStatuses); ?>
         <div class="glass-panel cat-box <?php echo ($st == 'locked') ? 'locked' : ''; ?>" <?php if ($st !== 'locked'): ?>
-            onclick="window.location.href='lesson.html?type=food'" <?php endif; ?>>
+            onclick="window.location.href='lesson.php?type=food'" <?php endif; ?>>
           <div class="category-icon">����</div>
           <strong>Food</strong>
         </div>
@@ -3754,7 +3754,7 @@ try {
         b.onclick = () => {
           if (isAnswered) return;
           document
-            .querySelectorAll("option-button")
+            .querySelectorAll(".option-buttons")
             .forEach((el) => el.classList.remove("selected"));
           b.classList.add("selected");
           selectedOption = b;
@@ -3781,7 +3781,7 @@ try {
           button.style.opacity = "0.5";
           button.style.pointerEvents = "none";
           window.location.replace(
-            `lesson.html?type=${lessonId}&action=complete`,
+            `lesson.php?type=${lessonId}&action=complete`,
           );
         }
         return;
@@ -4725,7 +4725,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   try {
     $pdo = new PDO("mysql:host=$dbHost;dbname=$dbName;charset=utf8mb4", $dbUser, $dbPass);
     // Validation
-    if (empty($username) || empty($email) || empty($password)) {
+    if (empty($username) || empty($email) || empty($pass)) {
       throw new Exception("All fields are required.");
     }
     if ($pass !== $confirmPass) {
@@ -6185,7 +6185,7 @@ try {
   // Count Completed Lessons
   $progStmt = $pdo->prepare("SELECT COUNT(*) FROM user_progress WHERE user_id = ? AND status = 'completed'");
   $progStmt->execute([$user_id]);
-  $lessonCompleted = $progStmt->fetchColumn();
+  $lessonsCompleted = $progStmt->fetchColumn();
   // Estimate Time Spent (Formula: Total XP / 50 * 3 minutes per lesson)
   // This gives a realistic approximation based on effort since we don't have a time_log table
   $totalMinutes = ($user['xp'] > 0) ? round(($user['xp'] / 50) * 3) : 0;
@@ -6563,7 +6563,7 @@ try {
             ?>
             <div class="bar-group">
               <div class="bar <?php echo $class; ?>"></div>
-              <span class="bar-label"><?php echo $d; ?></span>
+              <span class="bar-label"><?php echo $day; ?></span>
             </div>
           <?php endforeach; ?>
         </div>

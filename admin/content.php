@@ -34,7 +34,7 @@ try {
   // ADD LESSON
   if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'add') {
     $newId = $_POST['lesson_id'];
-    $newtitle = $_POST['title'];
+    $newTitle = $_POST['title'];
     $newCat = $_POST['category'];
     $newXp = $_POST['xp'];
     $newOrder = $_POST['sort_order'];
@@ -55,7 +55,7 @@ try {
   // --- 4. FETCH DATA ---
 
   // Stats
-  $statsStmt = $pdo->query("SELECT COUNT(*) as SUM(xp_value) as total_xp FROM lessons");
+  $statsStmt = $pdo->query("SELECT COUNT(*) as count, SUM(xp_value) as total_xp FROM lessons");
   $stats = $statsStmt->fetch(PDO::FETCH_ASSOC);
   $totalLessons = $stats['count'];
   $totalXP = $stats['total_xp'];
@@ -65,7 +65,7 @@ try {
   $sql = "SELECT * FROM lessons";
   $params = [];
   if ($search) {
-    $sql .= " WHERE title LIKE :search OR category LIKE ?";
+    $sql .= " WHERE title LIKE ? OR category LIKE ?";
     $params = ["%$search%", "%$search%"];
   }
   $sql .= " ORDER BY sort_order ASC";

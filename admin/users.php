@@ -56,7 +56,7 @@ try {
     $query_str .= " WHERE username LIKE ? OR email LIKE ?";
     $params = ["%$search%", "%$search%"];
   }
-  $query_str .= "ORDER BY id DESC";
+  $query_str .= " ORDER BY id DESC";
 
   $stmt = $pdo->prepare($query_str);
   $stmt->execute($params);

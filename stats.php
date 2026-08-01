@@ -35,7 +35,7 @@ try {
   // Count Completed Lessons
   $progStmt = $pdo->prepare("SELECT COUNT(*) FROM user_progress WHERE user_id = ? AND status = 'completed'");
   $progStmt->execute([$user_id]);
-  $lessonCompleted = $progStmt->fetchColumn();
+  $lessonsCompleted = $progStmt->fetchColumn();
 
   // Estimate Time Spent (Formula: Total XP / 50 * 3 minutes per lesson)
   // This gives a realistic approximation based on effort since we don't have a time_log table
@@ -464,7 +464,7 @@ try {
 
             <div class="bar-group">
               <div class="bar <?php echo $class; ?>"></div>
-              <span class="bar-label"><?php echo $d; ?></span>
+              <span class="bar-label"><?php echo $day; ?></span>
             </div>
           <?php endforeach; ?>
         </div>

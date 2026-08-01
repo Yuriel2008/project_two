@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $pdo = new PDO("mysql:host=$dbHost;dbname=$dbName;charset=utf8mb4", $dbUser, $dbPass);
 
     // Validation
-    if (empty($username) || empty($email) || empty($password)) {
+    if (empty($username) || empty($email) || empty($pass)) {
       throw new Exception("All fields are required.");
     }
     if ($pass !== $confirmPass) {
