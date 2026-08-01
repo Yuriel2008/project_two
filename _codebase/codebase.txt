@@ -1,4 +1,4 @@
-# codebase | 17 files | 2026-08-01 20:13:55
+# codebase | 17 files | 2026-08-01 20:23:09
 
 // 404.php
 <?php 
@@ -255,7 +255,7 @@ try {
   if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'delete') {
     $idToDelete = $_POST['id'];
     $deleteStmt = $pdo->prepare("DELETE FROM lessons WHERE id = ?");
-    $deleteStmt->execute(['id' => $lessonId]);
+    $deleteStmt->execute([$idToDelete]);
     header("Location: content.php");// Refresh to clear post data
     exit;
   }
@@ -2607,7 +2607,7 @@ CREATE TABLE `user_achievements` (
     KEY `user_id` (`user_id`),
     KEY `achievement_id` (`achievement_id`),
     CONSTRAINT `user_achievements_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE,
-    CONSTRAINT `user_achievements_ibfk_2` FOREIGN KEY (`achievement_id`) REFERENCES `achievement` (`id`) ON DELETE CASCADE
+    CONSTRAINT `user_achievements_ibfk_2` FOREIGN KEY (`achievement_id`) REFERENCES `achievements` (`id`) ON DELETE CASCADE
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;
 -- Section 5: Seeding Initial Data
 -- --------------------------------------------------------------
@@ -5435,7 +5435,7 @@ try {
               <h3><?php echo htmlspecialchars($item['title']); ?></h3>
               <p><?php echo htmlspecialchars($item['description']); ?></p>
             </div>
-            <?php if ($status === 'active'): ?>
+            <?php if ($status === 'completed'): ?>
               <div class="status-text">
                 <span>���</span> Complete
               </div>
@@ -6599,7 +6599,7 @@ try {
     <div class="achievement-grid">
       <?php foreach ($achievements as $ach): ?>
         <?php
-        $isUnlocked = !empty(['unlock_at']);
+        $isUnlocked = !empty($ach['unlock_at']);
         $class = $isUnlocked ? '' : 'locked';
         // Simple color cycling for unlocked icons -->
         $colors = ['var(--violet)', 'var(--cyan)', 'var(--green)', 'var(--orange)', 'var(--red)'];

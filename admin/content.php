@@ -26,7 +26,7 @@ try {
   if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'delete') {
     $idToDelete = $_POST['id'];
     $deleteStmt = $pdo->prepare("DELETE FROM lessons WHERE id = ?");
-    $deleteStmt->execute(['id' => $lessonId]);
+    $deleteStmt->execute([$idToDelete]);
     header("Location: content.php");// Refresh to clear post data
     exit;
   }

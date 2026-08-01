@@ -432,7 +432,7 @@ try {
               <h3><?php echo htmlspecialchars($item['title']); ?></h3>
               <p><?php echo htmlspecialchars($item['description']); ?></p>
             </div>
-            <?php if ($status === 'active'): ?>
+            <?php if ($status === 'completed'): ?>
               <div class="status-text">
                 <span>✓</span> Complete
               </div>
