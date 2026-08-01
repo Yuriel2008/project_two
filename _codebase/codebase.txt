@@ -1,4 +1,4 @@
-# codebase | 17 files | 2026-08-01 20:23:09
+# codebase | 17 files | 2026-08-01 20:40:34
 
 // 404.php
 <?php 
@@ -2803,7 +2803,7 @@ VALUES
     (3, 4),
     (4, 1);
 -- Always put space, not Enter when doing the Ctrl + Shift + F
-SET FOREIGN _KEY_CHECKS = 1;
+SET FOREIGN_KEY_CHECKS = 1;
 -- End of File
 
 // index.php

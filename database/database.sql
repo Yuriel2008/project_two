@@ -289,6 +289,6 @@ VALUES
     (4, 1);
 
 -- Always put space, not Enter when doing the Ctrl + Shift + F
-SET FOREIGN _KEY_CHECKS = 1;
+SET FOREIGN_KEY_CHECKS = 1;
 
 -- End of File
