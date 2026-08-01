@@ -42,7 +42,7 @@ try {
 
   // 4. Fetch Stats for the Mini-Strip
   $total_users = $pdo->query("SELECT COUNT(*) FROM users")->fetchColumn();
-  $banned_users = $pdo->query("SELECT COUNT(*) FROM users WHERE status = 'banned")->fetchColumn();
+  $banned_users = $pdo->query("SELECT COUNT(*) FROM users WHERE status = 'banned'")->fetchColumn();
   // Simulate "Online Now" based on activity in the last 15 mins (requires last_login column)
   // For this prototype, we'll use a count of users with high XP as a proxy or a static/random mock if column missing
   $online_now = $pdo->query("SELECT COUNT(*) FROM users WHERE status = 'active' LIMIT 1")->fetchColumn();

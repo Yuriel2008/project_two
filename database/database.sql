@@ -8,9 +8,7 @@
 -- This ensures a clean slate for every run, perfect for development.
 DROP DATABASE IF EXISTS `lingoflow_db`;
 
-CREATE DATABASE `lingoflow_db` CHARACTER
-SET
-    utf8mb4 COLLATE utf8mb4_unicodeci;
+CREATE DATABASE `lingoflow_db` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 USE `lingoflow_db`;
 
@@ -21,70 +19,74 @@ SET
 -- --------------------------------------------------------------
 -- Stores core user information, credentials, and top-level stats.
 CREATE TABLE `users` (
-        `id` INT (11) NOT NULL AUTO_INCREMENT,
-        `username` VARCHAR(50) NOT NULL,
-        `email` VARCHAR(100) NOT NULL,
-        `password` VARCHAR(255) NOT NULL, -- Storing plaintext as requested.
-        `xp` INT (11) NOT NULL DEFAULT 0,
-        `streak` INT (11) NOT NULL DEFAULT 0,
-        `accuracy` INT (5, 2) default 87.00,
-        `rank` VARCHAR(50) DEFAULT 'Silver II',
-        `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-        `last_login` TIMESTAMP NOT NULL DEFAULT CURRENT_STAMP ON UPDATE CURRENT_TIMESTAMP,
-        PRIMARY KEY (`id`),
-        UNIQUE KEY `username` (`username`),
-        UNIQUE KEY `email` (`email`)
-    ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;
+    `id` INT(11) NOT NULL AUTO_INCREMENT,
+    `username` VARCHAR(50) NOT NULL,
+    `email` VARCHAR(100) NOT NULL,
+    `password` VARCHAR(255) NOT NULL,
+    -- Storing plaintext as requested.
+    `xp` INT(11) NOT NULL DEFAULT 0,
+    `streak` INT(11) NOT NULL DEFAULT 0,
+    `accuracy` DECIMAL(5, 2) default 87.00,
+    `rank` VARCHAR(50) DEFAULT 'Silver II',
+    `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    `last_login` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    PRIMARY KEY (`id`),
+    UNIQUE KEY `username` (`username`),
+    UNIQUE KEY `email` (`email`)
+) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;
 
 -- Section 2: Lessons Table
 -- --------------------------------------------------------------
 -- Defines all available lessons in the learning roadmap.
 -- The 'id' column uses a string to easily link with front-end JS logic.
 CREATE TABLE `lessons` (
-        `id` VARCHAR(50) NOT NULL,
-        `title` VARCHAR(100) NOT NULL,
-        `category` VARCHAR(50) NOT NULL,
-        `description` VARCHAR(255) NOT DEFAULT NULL,
-        `xp_value` INT (11) NOT NULL DEFAULT 50,
-        `sort_order` INT (11) NOT NULL,
-        PRIMARY KEY (`id`)
-    ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;
+    `id` VARCHAR(50) NOT NULL,
+    `title` VARCHAR(100) NOT NULL,
+    `category` VARCHAR(50) NOT NULL,
+    `description` VARCHAR(255) DEFAULT NULL,
+    `xp_value` INT(11) NOT NULL DEFAULT 50,
+    `sort_order` INT(11) NOT NULL,
+    PRIMARY KEY (`id`)
+) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;
 
 -- Section 3: User Progress Table
 -- --------------------------------------------------------------
 -- Tracks each user's status for every lesson, forming the core of the Skill Tree.
 CREATE TABLE `user_progress` (
-        `id` INT (11) NOT NULL AUTIO_INCREMENT,
-        `user_id` INT (11) NOT NULL,
-        `lesson_id` VARCHAR(50) NOT NULL,
-        `score` INT (11) DEFAULT NULL,
-        `last_attempt` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-        PRIMARY KEY (`id`),
-        UNIQUE KEY `user_lesson_unique` (`user_id`, `lesson_id`) KEY `user_id` (`user_id`),
-        KEY `lesson_id` (`lesson_id`) CONSTRAINT `user_progress_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE,
-        CONSTRAINT `user_progress_ibfk_1` FOREIGN KEY (`lesson_id`) REFERENCES `lesson` (`id`) ON DELETE CASCADE
-    ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;
+    `id` INT(11) NOT NULL AUTO_INCREMENT,
+    `user_id` INT(11) NOT NULL,
+    `lesson_id` VARCHAR(50) NOT NULL,
+    `score` INT(11) DEFAULT NULL,
+    `last_attempt` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (`id`),
+    UNIQUE KEY `user_lesson_unique` (`user_id`, `lesson_id`),
+    KEY `user_id` (`user_id`),
+    KEY `lesson_id` (`lesson_id`),
+    CONSTRAINT `user_progress_ibfk_one` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE,
+    CONSTRAINT `user_progress_ibfk_two` FOREIGN KEY (`lesson_id`) REFERENCES `lessons` (`id`) ON DELETE CASCADE
+) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;
 
 -- Section 4: Achievements & User Unlocks
 -- --------------------------------------------------------------
 -- Defines all possible achievements and a linking table for user unlocks.
 CREATE TABLE `achievements` (
-        `id` INT (11) NOT NULL AUTIO_INCREMENT,
-        `name` VARCHAR(100) NOT NULL,
-        `description` VARCHAR(255) NOT NULL,
-        `icon_emoji` INT (10) NOT NULL,
-        PRIMARY KEY (`id`)
-    ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;
+    `id` INT(11) NOT NULL AUTO_INCREMENT,
+    `name` VARCHAR(100) NOT NULL,
+    `description` VARCHAR(255) NOT NULL,
+    `icon_emoji` VARCHAR(10) NOT NULL,
+    PRIMARY KEY (`id`)
+) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;
 
 CREATE TABLE `user_achievements` (
-        `user_id` INT (11) NOT NULL,
-        `achievement_id` INT (11) NOT NULL,
-        `unlock_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-        PRIMARY KEY (`user_id`, `achievement_id`),
-        KEY `user_id` (`achievements`),
-        KEY `achivement_id` (`ahcievement_id`) CONSTRAINT `user_achievements_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE,
-        CONSTRAINT `user_achievements_ibfk_2` FOREIGN KEY (`achievement_id`) REFERENCES `achievement` (`id`) ON DELETE CASCADE
-    ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;
+    `user_id` INT(11) NOT NULL,
+    `achievement_id` INT(11) NOT NULL,
+    `unlock_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (`user_id`, `achievement_id`),
+    KEY `user_id` (`usder_id`),
+    KEY `achievement_id` (`achievement_id`),
+    CONSTRAINT `user_achievements_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE,
+    CONSTRAINT `user_achievements_ibfk_2` FOREIGN KEY (`achievement_id`) REFERENCES `achievement` (`id`) ON DELETE CASCADE
+) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;
 
 -- Section 5: Seeding Initial Data
 -- --------------------------------------------------------------
@@ -284,8 +286,7 @@ VALUES
     (3, 3),
     (3, 4),
     (4, 1);
-
-SET
-    FOREIGN _KEY_CHECKS = 1;
+-- Always put space, not Enter when doing the Ctrl + Shift + F
+SET FOREIGN _KEY_CHECKS = 1;
 
 -- End of File

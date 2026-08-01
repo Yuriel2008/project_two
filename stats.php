@@ -47,9 +47,9 @@ try {
   // --- 5. FETCH ACHIEVEMENTS ---
   // Left Join to get all achievements + status for this user
   $achSql = "
-SELECT a.id, a.name, a.description, a.icon_emoji, ua.unlocked_at
-FROM achievements a
-LEFT JOIN user_achievements ua ON a.id = ua.achievement_id AND ua.user_id = ?
+     SELECT a.id, a.name, a.description, a.icon_emoji, unlocked_at
+     FROM achievements a
+     LEFT JOIN user_achievements ua ON a.id = ua.achievement_id AND ua.user_id = ?
 ";
   $achStmt = $pdo->prepare($achSql);
   $achStmt->execute([$user_id]);
