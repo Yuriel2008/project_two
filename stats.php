@@ -47,7 +47,7 @@ try {
   // --- 5. FETCH ACHIEVEMENTS ---
   // Left Join to get all achievements + status for this user
   $achSql = "
-     SELECT a.id, a.name, a.description, a.icon_emoji, unlocked_at
+     SELECT a.id, a.name, a.description, a.icon_emoji, unlock_at
      FROM achievements a
      LEFT JOIN user_achievements ua ON a.id = ua.achievement_id AND ua.user_id = ?
 ";

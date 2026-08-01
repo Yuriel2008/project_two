@@ -82,7 +82,7 @@ CREATE TABLE `user_achievements` (
     `achievement_id` INT(11) NOT NULL,
     `unlock_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (`user_id`, `achievement_id`),
-    KEY `user_id` (`usder_id`),
+    KEY `user_id` (`user_id`),
     KEY `achievement_id` (`achievement_id`),
     CONSTRAINT `user_achievements_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE,
     CONSTRAINT `user_achievements_ibfk_2` FOREIGN KEY (`achievement_id`) REFERENCES `achievement` (`id`) ON DELETE CASCADE
@@ -286,6 +286,7 @@ VALUES
     (3, 3),
     (3, 4),
     (4, 1);
+
 -- Always put space, not Enter when doing the Ctrl + Shift + F
 SET FOREIGN _KEY_CHECKS = 1;
 
