@@ -24,7 +24,7 @@ try {
   // --- 3. FETCH USER STATS ---
   $stmt = $pdo->prepare("SELECT username, xp, streak, accuracy, rank FROM users WHERE id = ?");
   $stmt->execute([$user_id]);
-  $userStats = $stmt->fetch(PDO::FETCH_ASSOC);
+  $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
   if (!$user) {
     // User invalid/deleted, kill session

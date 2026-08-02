@@ -315,9 +315,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </div>
 
     <!-- Status Placeholder (Populated by PHP) -->
-    <div id="status-box" class="status-msg <?php echo $statusMessage ? 'display: flex;': ''; ?>">
+    <div id="status-box" class="status-msg <?php echo $getMessage ? 'display: flex;': ''; ?>">
       <span id="stat-icon"><?php echo $statusIcon; ?></span>
-      <span id="status-text"><?php echo htmlspecialchars($statusMessage); ?></span>
+      <span id="status-text"><?php echo htmlspecialchars($getMessage); ?></span>
     </div>
     <!-- Form -->
     <form id="registerForm" method="POST" onsubmit="handleRegister(event)">

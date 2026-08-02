@@ -1,4 +1,4 @@
-# codebase | 18 files | 2026-08-02 15:25:11
+# codebase | 18 files | 2026-08-02 15:36:34
 
 // 404.php
 <?php 
@@ -1962,7 +1962,7 @@ try {
   // --- 3. FETCH USER STATS ---
   $stmt = $pdo->prepare("SELECT username, xp, streak, accuracy, rank FROM users WHERE id = ?");
   $stmt->execute([$user_id]);
-  $userStats = $stmt->fetch(PDO::FETCH_ASSOC);
+  $user = $stmt->fetch(PDO::FETCH_ASSOC);
   if (!$user) {
     // User invalid/deleted, kill session
     session_destroy();
@@ -4157,8 +4157,6 @@ $dbHost = 'localhost';
 $dbName = 'lingoflow_db';
 $dbUser = 'root';
 $dbPass = '';
-$totalMinutes = ($user['xp'] > 0) ? round(($user['xp'] / 50) * 3) : 0;
-$hoursSpent = floor($totalMinutes / 60) . "h " . ($totalMinutes % 60) . "m";
 try {
   $pdo = new PDO("mysql:host=$dbHost;dbname=$dbName;charset=utf8mb4", $dbUser, $dbPass);
   $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -4166,6 +4164,8 @@ try {
   $stmt = $pdo->prepare("SELECT username, email, xp, streak, accuracy, rank, created_at FROM users WHERE id = ?");
   $stmt->execute([$user_id]);
   $user = $stmt->fetch(PDO::FETCH_ASSOC);
+  $totalMinutes = ($user['xp'] > 0) ? round(($user['xp'] / 50) * 3) : 0;
+  $hoursSpent = floor($totalMinutes / 60) . "h " . ($totalMinutes % 60) . "m";
   if (!$user) {
     session_destroy();
     // User not found, redirect to login
@@ -5005,9 +5005,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       <p class="subtitle">Creating your profile to start earning XP.</p>
     </div>
     <!-- Status Placeholder (Populated by PHP) -->
-    <div id="status-box" class="status-msg <?php echo $statusMessage ? 'display: flex;': ''; ?>">
+    <div id="status-box" class="status-msg <?php echo $getMessage ? 'display: flex;': ''; ?>">
       <span id="stat-icon"><?php echo $statusIcon; ?></span>
-      <span id="status-text"><?php echo htmlspecialchars($statusMessage); ?></span>
+      <span id="status-text"><?php echo htmlspecialchars($getMessage); ?></span>
     </div>
     <!-- Form -->
     <form id="registerForm" method="POST" onsubmit="handleRegister(event)">
