@@ -439,7 +439,7 @@ try {
     <!--Header-->
     <header>
       <div>
-        <h1>Satistics</h1>
+        <h1>Statistics</h1>
         <p class="sub-header">Analyze your learning performance.</p>
       </div>
     </header>

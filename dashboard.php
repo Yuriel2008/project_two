@@ -643,7 +643,7 @@ try {
 
         <!-- Number Lesson -->
         <?php $st = getGridStatus('numbers1', $rawStatuses); ?>
-        <div class="glass-panel cat-box <?php echo ($st == 'locked') ? 'locked' : ''; ?>" <?php if ($st != 'locked'): ?>onclick="window.location.href='lesson.php?type=nmbers1'" <?php endif; ?>>
+        <div class="glass-panel cat-box <?php echo ($st == 'locked') ? 'locked' : ''; ?>" <?php if ($st != 'locked'): ?>onclick="window.location.href='lesson.php?type=numbers1'" <?php endif; ?>>
           <div class="cat-emoji">🔢</div>
           <strong>Numbers</strong>
         </div>

@@ -235,7 +235,7 @@ http_response_code(404);
         page you are looking for has been corrupted or moved to a secure sector.
       </p>
       <!-- Updated Link to PHP Dashboard -->
-      <a href="index.php" class="button-home">Returb to Base</a>
+      <a href="index.php" class="button-home">Return to Base</a>
     </div>
   </body>
 </html>
