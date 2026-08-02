@@ -405,7 +405,7 @@ function getAvatarColor($char)
         <line x1="8" y1="17" x2="16" y2="17" />
       </svg>
     </button>
-    <button class="icon-button" onclick="window.location.href = '../logout.php'">
+    <button class="icon-button" onclick="window.location.href = '../login.php'">
       <!-- License: PD. Made by CoreyGinnivan: https://github.com/CoreyGinnivan/system-uicons/ -->
       <svg width="24" height="24" viewBox="0 0 21 21" xmlns="http://www.w3.org/2000/svg">
         <g fill="none" fill-rule="evenodd" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"

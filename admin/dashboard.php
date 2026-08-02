@@ -133,7 +133,7 @@ try {
       <a href="content.php" class="sidebar-link flex item-center p-3 text-gray-400 rounded-lg transition-all">
         <i class="fas fa-book mr-3"></i> Lesson Content
       </a>
-      <a href="../logout.php" class="sidebar-link flex item-center p-3 text-red-400 rounded-lg transition-all">
+      <a href="../login.php" class="sidebar-link flex item-center p-3 text-red-400 rounded-lg transition-all">
         <i class="fas fa-sign-out-alt mr-3"></i> Terminate Session
       </a>
     </nav>
