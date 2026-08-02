@@ -759,7 +759,7 @@ try {
     function confirmLogout() {
       if (confirm("Are you sure you want to terminate you session?")) {
         // Triggers the PHP logout handler at the top of the file
-        window.location.href = "logout.php?";
+        window.location.href = '?action=logout';
       }
     }
 

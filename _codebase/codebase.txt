@@ -1,4 +1,4 @@
-# codebase | 18 files | 2026-08-02 14:49:51
+# codebase | 18 files | 2026-08-02 15:00:16
 
 // 404.php
 <?php 
@@ -834,7 +834,7 @@ session_start();
 // <!-- // 1. Session & Access Control
 // // Check if user is logged in AND is an admin -->
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
-  header('Location: ../login.php');
+  header('Location: ../logout.php');
   exit();
 }
 // <!-- // 2. Database Connection -->
@@ -940,7 +940,7 @@ try {
       <a href="content.php" class="sidebar-link flex item-center p-3 text-gray-400 rounded-lg transition-all">
         <i class="fas fa-book mr-3"></i> Lesson Content
       </a>
-      <a href="../login.php" class="sidebar-link flex item-center p-3 text-red-400 rounded-lg transition-all">
+      <a href="../logout.php" class="sidebar-link flex item-center p-3 text-red-400 rounded-lg transition-all">
         <i class="fas fa-sign-out-alt mr-3"></i> Terminate Session
       </a>
     </nav>
@@ -1814,7 +1814,7 @@ function getAvatarColor($char)
         <line x1="8" y1="17" x2="16" y2="17" />
       </svg>
     </button>
-    <button class="icon-button" onclick="window.location.href = '../login.php'">
+    <button class="icon-button" onclick="window.location.href = '../logout.php'">
       <!-- License: PD. Made by CoreyGinnivan: https://github.com/CoreyGinnivan/system-uicons/ -->
       <svg width="24" height="24" viewBox="0 0 21 21" xmlns="http://www.w3.org/2000/svg">
         <g fill="none" fill-rule="evenodd" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
@@ -6150,7 +6150,7 @@ try {
     function confirmLogout() {
       if (confirm("Are you sure you want to terminate you session?")) {
         // Triggers the PHP logout handler at the top of the file
-        window.location.href = "logout.php?";
+        window.location.href = '?action=logout';
       }
     }
     function toggleForm(formId) {

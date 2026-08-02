@@ -8,7 +8,7 @@ session_start();
 // <!-- // 1. Session & Access Control
 // // Check if user is logged in AND is an admin -->
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
-  header('Location: ../login.php');
+  header('Location: ../logout.php');
   exit();
 }
 
@@ -133,7 +133,7 @@ try {
       <a href="content.php" class="sidebar-link flex item-center p-3 text-gray-400 rounded-lg transition-all">
         <i class="fas fa-book mr-3"></i> Lesson Content
       </a>
-      <a href="../login.php" class="sidebar-link flex item-center p-3 text-red-400 rounded-lg transition-all">
+      <a href="../logout.php" class="sidebar-link flex item-center p-3 text-red-400 rounded-lg transition-all">
         <i class="fas fa-sign-out-alt mr-3"></i> Terminate Session
       </a>
     </nav>
