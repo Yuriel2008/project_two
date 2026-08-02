@@ -616,7 +616,7 @@ LIMIT 1
 
         <!--Numbers-->
         <?php $st = getGridStatus('numbers1', $rawStatuses); ?>
-        <div class="glass-panel cat-box <?php echo ($st == 'locked') ?: ''; ?>" <?php if ($st !== 'locked'): ?>
+        <div class="glass-panel cat-box <?php echo ($st == 'locked') ? 'locked': ''; ?>" <?php if ($st !== 'locked'): ?>
             onclick="window.location.href='lesson.php?type=numbers1'" <?php endif; ?>>
           <div class="category-icon">🔢</div>
           <strong>Numbers</strong>

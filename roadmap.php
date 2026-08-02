@@ -194,14 +194,14 @@ try {
     }
 
     /* Completed State */
-    .timeline-line.completed .node {
+    .timeline-item.completed .node {
       background: var(--cyan);
       border-color: var(--cyan);
       box-shadow: 0 0 15px rgba(6, 182, 212, 0.5), 0 0 0 4px var(--bg-deep);
     }
 
     /* Active State */
-    .timeline-line.active .node {
+    .timeline-item.active .node {
       background: var(--bg-deep);
       border-color: var(--violet);
       width: 24px;

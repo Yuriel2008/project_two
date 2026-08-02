@@ -61,7 +61,7 @@ try {
 
   // --- 5. FETCH STATUSES FOR GRID ---
   // specific IDs used in the HTML grid
-  $gridIds = ['emotions', 'nmbers1', 'respect', 'food'];
+  $gridIds = ['emotions', 'numbers1', 'respect', 'food'];
   $placeholders = str_repeat('?,', count($gridIds) - 1) . '?';
 
   $gridSmt = $pdo->prepare("SELECT lesson_id, title, status
@@ -614,7 +614,7 @@ try {
       <div class="glass-panel goal-card">
         <h3>Daily Goal</h3>
         <div class="progress-track">
-          <div class="progress-fill" style="<?php echo $dailyPercent; ?>%;"></div>
+          <div class="progress-fill" style="width:<?php echo $dailyPercent; ?>%;"></div>
         </div>
         <div class="goal-text">
           <span><?php echo $dailyProgress; ?>XP</span>
