@@ -642,14 +642,14 @@ try {
         </div>
 
         <!-- Number Lesson -->
-        <?php $st = getGridStatus('number1', $rawStatuses); ?>
+        <?php $st = getGridStatus('numbers1', $rawStatuses); ?>
         <div class="glass-panel cat-box <?php echo ($st == 'locked') ? 'locked' : ''; ?>" <?php if ($st != 'locked'): ?>onclick="window.location.href='lesson.php?type=nmbers1'" <?php endif; ?>>
           <div class="cat-emoji">🔢</div>
           <strong>Numbers</strong>
         </div>
 
         <!-- Greetings Lesson -->
-        <?php $st = getGridStatus('repect', $rawStatuses); ?>
+        <?php $st = getGridStatus('respect', $rawStatuses); ?>
         <div class="glass-panel cat-box <?php echo ($st == 'locked') ? 'locked' : ''; ?>" <?php if ($st != 'locked'): ?>onclick="window.location.href='lesson.php?type=respect'" <?php endif; ?>>
           <div class="cat-emoji">🤝</div>
           <strong>Greetings</strong>

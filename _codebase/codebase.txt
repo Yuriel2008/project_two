@@ -1,4 +1,4 @@
-# codebase | 18 files | 2026-08-02 15:42:51
+# codebase | 18 files | 2026-08-02 15:49:32
 
 // 404.php
 <?php 
@@ -2507,13 +2507,13 @@ try {
           <strong>Emotions</strong>
         </div>
         <!-- Number Lesson -->
-        <?php $st = getGridStatus('number1', $rawStatuses); ?>
+        <?php $st = getGridStatus('numbers1', $rawStatuses); ?>
         <div class="glass-panel cat-box <?php echo ($st == 'locked') ? 'locked' : ''; ?>" <?php if ($st != 'locked'): ?>onclick="window.location.href='lesson.php?type=nmbers1'" <?php endif; ?>>
           <div class="cat-emoji">����</div>
           <strong>Numbers</strong>
         </div>
         <!-- Greetings Lesson -->
-        <?php $st = getGridStatus('repect', $rawStatuses); ?>
+        <?php $st = getGridStatus('respect', $rawStatuses); ?>
         <div class="glass-panel cat-box <?php echo ($st == 'locked') ? 'locked' : ''; ?>" <?php if ($st != 'locked'): ?>onclick="window.location.href='lesson.php?type=respect'" <?php endif; ?>>
           <div class="cat-emoji">����</div>
           <strong>Greetings</strong>
@@ -5005,7 +5005,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       <p class="subtitle">Creating your profile to start earning XP.</p>
     </div>
     <!-- Status Placeholder (Populated by PHP) -->
-    <div id="status-box" class="status-msg <?php echo $getMessage ? 'display: flex;': ''; ?>">
+    <div id="status-box" class="status-msg" style="<?php echo $getMessage ? 'display: flex;': ''; ?>">
       <span id="stat-icon"><?php echo $statusIcon; ?></span>
       <span id="status-text"><?php echo htmlspecialchars($getMessage); ?></span>
     </div>
