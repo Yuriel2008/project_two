@@ -1,4 +1,4 @@
-# project_two | Structure | 2026-08-02 14:29:29
+# project_two | Structure | 2026-08-02 14:43:58
 
 .
 ├── admin/
@@ -14,6 +14,7 @@
 ├── index.php
 ├── lesson.php
 ├── login.php
+├── logout.php
 ├── profile.php
 ├── README.md
 ├── register.php

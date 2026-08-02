@@ -1,10 +1,10 @@
 <?php
 // --- 1. SESSION & INIT ---
 session_start();
-session_unset();
 
 // --- 2. LOGOUT HANDLER ---
 if (isset($_GET['action']) && $_GET['action'] === 'logout') {
+  session_unset();
   // Unset all session variables
   $_SESSION = array();
 

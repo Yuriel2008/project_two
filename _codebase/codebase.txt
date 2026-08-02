@@ -1,4 +1,4 @@
-# codebase | 17 files | 2026-08-02 14:29:29
+# codebase | 18 files | 2026-08-02 14:43:58
 
 // 404.php
 <?php 
@@ -4123,6 +4123,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </body>
 </html>
 
+// logout.php
+<?php
+session_start();
+session_unset();
+session_destroy();
+header("Location: login.php");
+exit();
+?>
+
 // profile.php
 <?php
 // --- 1. SESSION & INITATE ---
@@ -5461,9 +5470,9 @@ try {
 <?php
 // --- 1. SESSION & INIT ---
 session_start();
-session_unset();
 // --- 2. LOGOUT HANDLER ---
 if (isset($_GET['action']) && $_GET['action'] === 'logout') {
+  session_unset();
   // Unset all session variables
   $_SESSION = array();
   // Destroy the session cookie
