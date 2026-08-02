@@ -49,6 +49,22 @@ CREATE TABLE `lessons` (
     PRIMARY KEY (`id`)
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;
 
+-- Section 6: Questions Table & Seed Data
+-- --------------------------------------------------------------
+CREATE TABLE `questions` (
+    `id` INT(11) NOT NULL AUTO_INCREMENT,
+    `lesson_id` VARCHAR(50) NOT NULL,
+    `question_text` VARCHAR(255) NOT NULL,
+    `option_a` VARCHAR(100) NOT NULL,
+    `option_b` VARCHAR(100) NOT NULL,
+    `option_c` VARCHAR(100) NOT NULL,
+    `option_d` VARCHAR(100) NOT NULL,
+    `correct_option` ENUM('a', 'b', 'c', 'd') NOT NULL,
+    PRIMARY KEY (`id`),
+    KEY `lesson_id` (`lesson_id`),
+    CONSTRAINT `fk_questions_lessons` FOREIGN KEY (`lesson_id`) REFERENCES `lessons` (`id`) ON DELETE CASCADE
+) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;
+
 -- Section 3: User Progress Table
 -- --------------------------------------------------------------
 -- Tracks each user's status for every lesson, forming the core of the Skill Tree.
@@ -156,80 +172,6 @@ VALUES
         '2026-02-13 17:15:00'
     );
 
--- Section 6: Questions Table & Seed Data
--- --------------------------------------------------------------
-CREATE TABLE `questions` (
-    `id` INT(11) NOT NULL AUTO_INCREMENT,
-    `lesson_id` VARCHAR(50) NOT NULL,
-    `question_text` VARCHAR(255) NOT NULL,
-    `option_a` VARCHAR(100) NOT NULL,
-    `option_b` VARCHAR(100) NOT NULL,
-    `option_c` VARCHAR(100) NOT NULL,
-    `option_d` VARCHAR(100) NOT NULL,
-    `correct_option` ENUM('a', 'b', 'c', 'd') NOT NULL,
-    PRIMARY KEY (`id`),
-    KEY `lesson_id` (`lesson_id`),
-    CONSTRAINT `fk_questions_lessons` FOREIGN KEY (`lesson_id`) REFERENCES `lessons` (`id`) ON DELETE CASCADE
-) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;
-
--- Seed Sample Questions
-INSERT INTO
-    `questions` (
-        `lesson_id`,
-        `question_text`,
-        `option_a`,
-        `option_b`,
-        `option_c`,
-        `option_d`,
-        `correct_option`
-    )
-VALUES
-    (
-        'basics',
-        'How do you say ''I'' or ''Me''?',
-        'Tôi',
-        'Bạn',
-        'Họ',
-        'Nó',
-        'a'
-    ),
-    (
-        'basics',
-        'Translate ''Hello'' to Vietnamese',
-        'Xin chào',
-        'Tạm biệt',
-        'Cảm ơn',
-        'Xin lỗi',
-        'a'
-    ),
-    (
-        'greetings',
-        'Translate ''Nice to meet you!''',
-        'Rất vui được gặp bạn',
-        'Cảm ơn bạn nhiều',
-        'Tạm biệt bạn',
-        'Xin lỗi bạn',
-        'a'
-    ),
-    (
-        'respect',
-        'How to say ''Hello'' respectfully to an older person?',
-        'Cháu chào bác',
-        'Ê bạn',
-        'Chào nhé',
-        'Hi',
-        'a'
-    ),
-    (
-        'numbers1',
-        'What is the number ''1''?',
-        'Một',
-        'Hai',
-        'Ba',
-        'Bốn',
-        'a'
-    );
-
 -- Seed Lessons Table (based on roadmap.php & lesson.php)
 INSERT INTO
     `lessons` (
@@ -298,6 +240,64 @@ VALUES
         7
     );
 
+-- Seed Sample Questions
+INSERT INTO
+    `questions` (
+        `lesson_id`,
+        `question_text`,
+        `option_a`,
+        `option_b`,
+        `option_c`,
+        `option_d`,
+        `correct_option`
+    )
+VALUES
+    (
+        'basics',
+        'How do you say ''I'' or ''Me''?',
+        'Tôi',
+        'Bạn',
+        'Họ',
+        'Nó',
+        'a'
+    ),
+    (
+        'basics',
+        'Translate ''Hello'' to Vietnamese',
+        'Xin chào',
+        'Tạm biệt',
+        'Cảm ơn',
+        'Xin lỗi',
+        'a'
+    ),
+    (
+        'greetings',
+        'Translate ''Nice to meet you!''',
+        'Rất vui được gặp bạn',
+        'Cảm ơn bạn nhiều',
+        'Tạm biệt bạn',
+        'Xin lỗi bạn',
+        'a'
+    ),
+    (
+        'respect',
+        'How to say ''Hello'' respectfully to an older person?',
+        'Cháu chào bác',
+        'Ê bạn',
+        'Chào nhé',
+        'Hi',
+        'a'
+    ),
+    (
+        'numbers1',
+        'What is the number ''1''?',
+        'Một',
+        'Hai',
+        'Ba',
+        'Bốn',
+        'a'
+    );
+
 -- Seed User Progress for 'Learner' (id=1) to match roadmap.php
 INSERT INTO
     `user_progress` (`user_id`, `lesson_id`, `status`)
@@ -363,7 +363,6 @@ VALUES
     (4, 1);
 
 -- Always put space, not Enter when doing the Ctrl + Shift + F
-SET
-    FOREIGN_KEY_CHECKS = 1;
+SET FOREIGN_KEY_CHECKS = 1;
 
 -- End of File
