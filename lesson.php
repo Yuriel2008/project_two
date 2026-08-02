@@ -93,7 +93,7 @@ try {
   // --- 5. DEFINE QUESTIONS (EXTENSIVE FUN DATA) ---
   $allQuestions = [
     'basics' => [
-      ['q' => "How do you say 'I' or 'Me'?", 'answers' => [['text' => "Tôi", 'correct' => true], ['text' => "Bạn", 'corect' => false], ['text' => "Họ", 'correct' => false], ['text' => false]]],
+      ['q' => "How do you say 'I' or 'Me'?", 'answers' => [['text' => "Tôi", 'correct' => true], ['text' => "Bạn", 'corect' => false], ['text' => "Họ", 'correct' => false], ['text' => "Nó", 'correct' => false]]],
       ['q' => "Translate 'Hello' to Vietnamese", 'answers' => [['text' => "Xin chào", 'correct' => true], ['text' => "Tạm biệt", 'correct' => false], ['text' => "Cảm ơn", 'correct' => false], ['text' => "Xin lỗi", 'correct' => false]]],
       ['q' => "How do you refer to 'You' (a friend)?", 'answers' => [['text' => "Bạn", 'correct' => true], ['text' => "Tôi", 'correct' => false], ['text' => "Chúng ta", 'correct' => false], ['text' => "Anh ấy", 'correct' => false]]],
       ['q' => "Translate 'We' (exclusive)", 'answers' => [['text' => "Chúng tôi", 'correct' => true], ['text' => "Họ", 'correct' => false], ['text' => "Các bạn", 'correct' => false], ['text' => "Mọi người", 'correct' => false]]],
@@ -445,7 +445,7 @@ try {
         `${(currentIndex / questions.length) * 100}%`;
     }
     function handleCheck() {
-      const button = document.createElement("button");
+      const button = document.createElement("check-button");
 
       if (isAnswered) {
         // Go to next question or finish

@@ -654,7 +654,7 @@ try {
         <input type="number" name="xp" placeholder="XP Value" value="50">
         <input type="number" name="sort_order" placeholder="Sort Order" value="99">
         <div style="display: flex; justify-content: space-between; margin-top: 15px;">
-          <button type="button" onclick="document.getElementById('addModal')"
+          <button type="button" onclick="document.getElementById('addModal').style.display='none'"
             style="background: transparent; color: white; border: 1px solid var(--border); padding: 8px 16px; border-radius: 8px; cursor: pointer;">Cancel</button>
           <button type="submit"
             style="background: var(--violet); color: white; border: none; padding: 8px 16px; border-radius: 8px; cursor: pointer;">Create</button>

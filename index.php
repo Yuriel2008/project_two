@@ -62,7 +62,7 @@ LIMIT 1
   // --- 5. FETCH STATUSES FOR GRID ---
   // specific IDs used in the HTML grid
   $gridIds = ['emotions', 'numbers1', 'respect', 'food'];
-  $placeholders = str_repeat('?', count($gridIds) - 1) . '?';
+  $placeholders = str_repeat('?,',  count($gridIds) - 1) . '?';
 
   $gridStmt = $pdo->prepare("SELECT lesson_id, status FROM user_progress WHERE user_id = ? AND lesson_id IN ($placeholders)");
   $gridParams = array_merge([$userId], $gridIds);

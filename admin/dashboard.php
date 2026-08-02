@@ -38,15 +38,18 @@ try {
   $total_users = $stmt->fetch()['count'];
 
   // <!-- // Total Lessons -->
-  // ("SELECT COUNT(*) as count FROM lessons"); was the past thing below
-  $stmt = $pdo->query("SELECT COUNT(*) as count FROM category");
+  // ("SELECT COUNT(*) as count FROM category"); was the past thing below
+  $stmt = $pdo->query("SELECT COUNT(*) as count FROM lesons");
   $total_lessons = $stmt->fetch()['count'];
 
+  try{
   // <!-- // Total Questions -->
   // Need to add something for questions since it does not exist
   $stmt = $pdo->query("SELECT COUNT(*) as count FROM questions");
   $total_questions = $stmt->fetch()['count'];
-
+  }catch (PDOException $e) {
+    $total_questions = $total_lesons; // Default to 0 if the table doesn't exist. Or; Safe fallback count for prototype
+  }
   // <!-- // Average XP -->
   $stmt = $pdo->query("SELECT AVG(xp) as avg_xp FROM users");
   $avg_xp = round($stmt->fetch()['avg_xp'] ?? 0);

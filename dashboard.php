@@ -39,11 +39,11 @@ try {
   // --- 4. FETCH NEXT ACTIVE LESSON ---
   // Join lessons with user_progress to find the current 'active' lesson
   $lessonSmt = $pdo->prepare("
-      SELECT l.id, l.title, l.type
+      SELECT l.id, l.title, l.category
       FROM lessons l
       LEFT JOIN user_progress up ON l.id = up.lesson_id AND up.user_id = ?
       WHERE up.status IS NULL OR up.status != 'completed'
-      ORDER BY l.id ASC
+      ORDER BY l.sort_order ASC
       LIMIT 1
       ");
   $lessonSmt->execute([$user_id]);

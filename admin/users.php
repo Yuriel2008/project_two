@@ -487,7 +487,7 @@ function getAvatarColor($char)
             <tr>
               <td>
                 <div class="user-cell">
-                  <div class="user-avatar" style=" <?php echo getAvatarColor($user_row['username'][0]); ?>">
+                  <div class="user-avatar" style="background: <?php echo getAvatarColor($user_row['username'][0]); ?>">
                     <?php echo strtoupper($user_row['username'][0]); ?>
                   </div>
                   <div>

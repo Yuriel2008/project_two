@@ -1,4 +1,4 @@
-# codebase | 18 files | 2026-08-02 16:18:13
+# codebase | 18 files | 2026-08-02 17:14:54
 
 // 404.php
 <?php 
@@ -808,7 +808,7 @@ try {
         <input type="number" name="xp" placeholder="XP Value" value="50">
         <input type="number" name="sort_order" placeholder="Sort Order" value="99">
         <div style="display: flex; justify-content: space-between; margin-top: 15px;">
-          <button type="button" onclick="document.getElementById('addModal')"
+          <button type="button" onclick="document.getElementById('addModal').style.display='none'"
             style="background: transparent; color: white; border: 1px solid var(--border); padding: 8px 16px; border-radius: 8px; cursor: pointer;">Cancel</button>
           <button type="submit"
             style="background: var(--violet); color: white; border: none; padding: 8px 16px; border-radius: 8px; cursor: pointer;">Create</button>
@@ -858,13 +858,17 @@ try {
   $stmt = $pdo->query("SELECT COUNT(*) as count FROM users");
   $total_users = $stmt->fetch()['count'];
   // <!-- // Total Lessons -->
-  // ("SELECT COUNT(*) as count FROM lessons"); was the past thing below
-  $stmt = $pdo->query("SELECT COUNT(*) as count FROM category");
+  // ("SELECT COUNT(*) as count FROM category"); was the past thing below
+  $stmt = $pdo->query("SELECT COUNT(*) as count FROM lesons");
   $total_lessons = $stmt->fetch()['count'];
+  try{
   // <!-- // Total Questions -->
   // Need to add something for questions since it does not exist
   $stmt = $pdo->query("SELECT COUNT(*) as count FROM questions");
   $total_questions = $stmt->fetch()['count'];
+  }catch (PDOException $e) {
+    $total_questions = $total_lesons; // Default to 0 if the table doesn't exist. Or; Safe fallback count for prototype
+  }
   // <!-- // Average XP -->
   $stmt = $pdo->query("SELECT AVG(xp) as avg_xp FROM users");
   $avg_xp = round($stmt->fetch()['avg_xp'] ?? 0);
@@ -1893,7 +1897,7 @@ function getAvatarColor($char)
             <tr>
               <td>
                 <div class="user-cell">
-                  <div class="user-avatar" style=" <?php echo getAvatarColor($user_row['username'][0]); ?>">
+                  <div class="user-avatar" style="background: <?php echo getAvatarColor($user_row['username'][0]); ?>">
                     <?php echo strtoupper($user_row['username'][0]); ?>
                   </div>
                   <div>
@@ -1974,11 +1978,11 @@ try {
   // --- 4. FETCH NEXT ACTIVE LESSON ---
   // Join lessons with user_progress to find the current 'active' lesson
   $lessonSmt = $pdo->prepare("
-      SELECT l.id, l.title, l.type
+      SELECT l.id, l.title, l.category
       FROM lessons l
       LEFT JOIN user_progress up ON l.id = up.lesson_id AND up.user_id = ?
       WHERE up.status IS NULL OR up.status != 'completed'
-      ORDER BY l.id ASC
+      ORDER BY l.sort_order ASC
       LIMIT 1
       ");
   $lessonSmt->execute([$user_id]);
@@ -2864,7 +2868,7 @@ LIMIT 1
   // --- 5. FETCH STATUSES FOR GRID ---
   // specific IDs used in the HTML grid
   $gridIds = ['emotions', 'numbers1', 'respect', 'food'];
-  $placeholders = str_repeat('?', count($gridIds) - 1) . '?';
+  $placeholders = str_repeat('?,',  count($gridIds) - 1) . '?';
   $gridStmt = $pdo->prepare("SELECT lesson_id, status FROM user_progress WHERE user_id = ? AND lesson_id IN ($placeholders)");
   $gridParams = array_merge([$userId], $gridIds);
   $gridStmt->execute($gridParams);
@@ -3466,7 +3470,7 @@ try {
   // --- 5. DEFINE QUESTIONS (EXTENSIVE FUN DATA) ---
   $allQuestions = [
     'basics' => [
-      ['q' => "How do you say 'I' or 'Me'?", 'answers' => [['text' => "Tôi", 'correct' => true], ['text' => "Bạn", 'corect' => false], ['text' => "Họ", 'correct' => false], ['text' => false]]],
+      ['q' => "How do you say 'I' or 'Me'?", 'answers' => [['text' => "Tôi", 'correct' => true], ['text' => "Bạn", 'corect' => false], ['text' => "Họ", 'correct' => false], ['text' => "Nó", 'correct' => false]]],
       ['q' => "Translate 'Hello' to Vietnamese", 'answers' => [['text' => "Xin chào", 'correct' => true], ['text' => "Tạm biệt", 'correct' => false], ['text' => "Cảm ơn", 'correct' => false], ['text' => "Xin lỗi", 'correct' => false]]],
       ['q' => "How do you refer to 'You' (a friend)?", 'answers' => [['text' => "Bạn", 'correct' => true], ['text' => "Tôi", 'correct' => false], ['text' => "Chúng ta", 'correct' => false], ['text' => "Anh ấy", 'correct' => false]]],
       ['q' => "Translate 'We' (exclusive)", 'answers' => [['text' => "Chúng tôi", 'correct' => true], ['text' => "Họ", 'correct' => false], ['text' => "Các bạn", 'correct' => false], ['text' => "Mọi người", 'correct' => false]]],
@@ -3773,7 +3777,7 @@ try {
         `${(currentIndex / questions.length) * 100}%`;
     }
     function handleCheck() {
-      const button = document.createElement("button");
+      const button = document.createElement("check-button");
       if (isAnswered) {
         // Go to next question or finish
         currentIndex++;
@@ -5087,6 +5091,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 // roadmap.php
 <?php
 // --- 1. SESSION & INITATE ---
+session_start();
 // Redirect if not logged in
 if (!isset($_SESSION['user_id'])) {
   header('Location: login.php');
