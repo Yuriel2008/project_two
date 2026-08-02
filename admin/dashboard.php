@@ -38,10 +38,12 @@ try {
   $total_users = $stmt->fetch()['count'];
 
   // <!-- // Total Lessons -->
-  $stmt = $pdo->query("SELECT COUNT(*) as count FROM lessons");
+  // ("SELECT COUNT(*) as count FROM lessons"); was the past thing below
+  $stmt = $pdo->query("SELECT COUNT(*) as count FROM category");
   $total_lessons = $stmt->fetch()['count'];
 
   // <!-- // Total Questions -->
+  // Need to add something for questions since it does not exist
   $stmt = $pdo->query("SELECT COUNT(*) as count FROM questions");
   $total_questions = $stmt->fetch()['count'];
 

@@ -60,7 +60,7 @@ try {
 
       if (!empty($new_email) && filter_var($new_email, FILTER_VALIDATE_EMAIL)) {
         // Check if email is already taken by another user
-        $stmt = $pdo->prepare("SELECT id FROM users WHERE email = ? AND id = ?");
+        $stmt = $pdo->prepare("SELECT id FROM users WHERE email = ? AND id != ?");
         $stmt->execute([$new_email, $user_id]);
         if ($stmt->fetch()) {
           $statusMsg = "That email address is already in use.";
@@ -711,7 +711,7 @@ try {
         <form method="POST" id="passwordForm" class="hidden-form">
           <input type="hidden" name="action" value="update_password" />
           <div class="form-group">
-            <input type="password" name="current_password" class="form_input" placeholder="Current Password" required />
+            <input type="password" name="current_password" class="form-input" placeholder="Current Password" required />
           </div>
           <div class="form-group">
             <input type="password" name="new_password" class="form-input" placeholder="New Password (Min 6 chars)"

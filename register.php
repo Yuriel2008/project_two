@@ -20,6 +20,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $pass = $_POST['password'] ?? '';
   $confirmPassword = $_POST['confirm-password'] ?? '';
 
+      // Database Connection
+    $dbHost = 'localhost';
+    $dbName = 'lingoflow_db';
+    $dbUser = 'root';
+    $dbPass = '';
+
   try {
     $pdo = new PDO("mysql:host=$dbHost;dbname=$dbName;charset=utf8mb4", $dbUser, $dbPass);
 
@@ -309,9 +315,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </div>
 
     <!-- Status Placeholder (Populated by PHP) -->
-    <div id="status-box" class="status-msg <?php echo $statusMsg ? 'display: flex;': ''; ?>">
+    <div id="status-box" class="status-msg <?php echo $statusMessage ? 'display: flex;': ''; ?>">
       <span id="stat-icon"><?php echo $statusIcon; ?></span>
-      <span id="status-text"><?php echo htmlspecialchars($statusMsg); ?></span>
+      <span id="status-text"><?php echo htmlspecialchars($statusMessage); ?></span>
     </div>
     <!-- Form -->
     <form id="registerForm" method="POST" onsubmit="handleRegister(event)">

@@ -345,7 +345,7 @@ try {
       }
     }
 
-    @media (max-wdith: 768px) {
+    @media (max-width: 768px) {
       body {
         grid-template-columns: 1fr;
         grid-template-rows: 1fr 70px;

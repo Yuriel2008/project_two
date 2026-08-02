@@ -15,6 +15,8 @@ $dbHost = 'localhost';
 $dbName = 'lingoflow_db';
 $dbUser = 'root';
 $dbPass = '';
+$totalMinutes = ($user['xp'] > 0) ? round(($user['xp'] / 50) * 3) : 0;
+$hoursSpent = floor($totalMinutes / 60) . "h " . ($totalMinutes % 60) . "m";
 
 try {
   $pdo = new PDO("mysql:host=$dbHost;dbname=$dbName;charset=utf8mb4", $dbUser, $dbPass);
@@ -607,7 +609,7 @@ try {
                 / 100</span>
             </div>
             <div class="progress-track">
-              <div class="progress-fill" style=" width: <?php echo $dailyProgress; ?>;
+              <div class="progress-fill" style=" width: <?php echo $dailyProgress; ?>%;
                     background: var(--violet);
                     box-shadow: 0 0 10px var(--violet-glow);
                   "></div>

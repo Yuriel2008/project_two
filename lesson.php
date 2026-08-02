@@ -362,7 +362,7 @@ try {
   </footer>
   <script>
     // 1. Get raw data from PHP
-    const questions = <?php echo json_encode($currentQuestions); ?>;
+    const questions = <?php echo json_encode($currentQuestion); ?>;
     const lessonId = "<?php echo $lesson_id; ?>";
 
     let currentIndex = 0;

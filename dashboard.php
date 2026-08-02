@@ -66,14 +66,14 @@ try {
 
   $gridSmt = $pdo->prepare("SELECT lesson_id, title, status
       FROM user_progress 
-      WHERE user_id = ? AND lessons_id IN ($placeholders)");
+      WHERE user_id = ? AND lesson_id IN ($placeholders)");
 
   $gridParams = array_merge([$user_id], $gridIds);
   $gridSmt->execute($gridParams);
   $rawStatuses = $gridSmt->fetchAll(PDO::FETCH_KEY_PAIR); // returns ['emotions' => 'locked', etc]
 
   // Helper to check status
-  function getLessonStatus($id, $map)
+  function getGridStatus($id, $map)
   {
     return $map[$id] ?? 'locked'; // // Default to locked if not found in progress table. Or Tab by default to locked if not found
   }
