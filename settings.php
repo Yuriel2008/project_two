@@ -772,7 +772,7 @@ try {
         document
           .querySelectorAll(".hidden-form")
           .forEach((f) => f.classList.remove("active"));
-        form.classList.remove("active");
+        form.classList.add("active");
 
         // Focus the first input of the revealed form smoothly
         setTimeout(() => {

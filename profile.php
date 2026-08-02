@@ -24,8 +24,6 @@ try {
   $stmt = $pdo->prepare("SELECT username, email, xp, streak, accuracy, rank, created_at FROM users WHERE id = ?");
   $stmt->execute([$user_id]);
   $user = $stmt->fetch(PDO::FETCH_ASSOC);
-  $totalMinutes = ($user['xp'] > 0) ? round(($user['xp'] / 50) * 3) : 0;
-  $hoursSpent = floor($totalMinutes / 60) . "h " . ($totalMinutes % 60) . "m";
 
   if (!$user) {
     session_destroy();
@@ -33,6 +31,9 @@ try {
     header('Location: login.php');
     exit();
   }
+
+  $totalMinutes = ($user['xp'] > 0) ? round(($user['xp'] / 50) * 3) : 0;
+  $hoursSpent = floor($totalMinutes / 60) . "h " . ($totalMinutes % 60) . "m";
 
   // Calculations
   $level = floor($user['xp'] / 200) + 1;

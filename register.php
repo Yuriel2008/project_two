@@ -394,7 +394,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     function showStatus(type, message, icon) {
       const box = document.getElementById("status-box");
       const text = document.getElementById("status-text");
-      const icon = document.getElementById("status-icon");
+      const iconEl = document.getElementById("status-icon");
 
       box.className = `status-msg ${type}`;
       box.style.display = "flex";

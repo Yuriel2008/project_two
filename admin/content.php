@@ -558,7 +558,7 @@ try {
     </header>
 
     <!-- Stats Strip -->
-    <div class="stat-strip">
+    <div class="stats-strip">
       <div class="mini-stat">
         <div class="mini-icon" style="color: var(--cyan);">📚</div>
         <div>

@@ -1,4 +1,4 @@
-# codebase | 18 files | 2026-08-02 17:14:54
+# codebase | 18 files | 2026-08-02 20:27:06
 
 // 404.php
 <?php 
@@ -715,7 +715,7 @@ try {
       </div>
     </header>
     <!-- Stats Strip -->
-    <div class="stat-strip">
+    <div class="stats-strip">
       <div class="mini-stat">
         <div class="mini-icon" style="color: var(--cyan);">����</div>
         <div>
@@ -859,7 +859,7 @@ try {
   $total_users = $stmt->fetch()['count'];
   // <!-- // Total Lessons -->
   // ("SELECT COUNT(*) as count FROM category"); was the past thing below
-  $stmt = $pdo->query("SELECT COUNT(*) as count FROM lesons");
+  $stmt = $pdo->query("SELECT COUNT(*) as count FROM lessons");
   $total_lessons = $stmt->fetch()['count'];
   try{
   // <!-- // Total Questions -->
@@ -867,7 +867,7 @@ try {
   $stmt = $pdo->query("SELECT COUNT(*) as count FROM questions");
   $total_questions = $stmt->fetch()['count'];
   }catch (PDOException $e) {
-    $total_questions = $total_lesons; // Default to 0 if the table doesn't exist. Or; Safe fallback count for prototype
+    $total_questions = $total_lessons; // Default to 0 if the table doesn't exist. Or; Safe fallback count for prototype
   }
   // <!-- // Average XP -->
   $stmt = $pdo->query("SELECT AVG(xp) as avg_xp FROM users");
@@ -3470,7 +3470,7 @@ try {
   // --- 5. DEFINE QUESTIONS (EXTENSIVE FUN DATA) ---
   $allQuestions = [
     'basics' => [
-      ['q' => "How do you say 'I' or 'Me'?", 'answers' => [['text' => "Tôi", 'correct' => true], ['text' => "Bạn", 'corect' => false], ['text' => "Họ", 'correct' => false], ['text' => "Nó", 'correct' => false]]],
+      ['q' => "How do you say 'I' or 'Me'?", 'answers' => [['text' => "Tôi", 'correct' => true], ['text' => "Bạn", 'correct' => false], ['text' => "Họ", 'correct' => false], ['text' => "Nó", 'correct' => false]]],
       ['q' => "Translate 'Hello' to Vietnamese", 'answers' => [['text' => "Xin chào", 'correct' => true], ['text' => "Tạm biệt", 'correct' => false], ['text' => "Cảm ơn", 'correct' => false], ['text' => "Xin lỗi", 'correct' => false]]],
       ['q' => "How do you refer to 'You' (a friend)?", 'answers' => [['text' => "Bạn", 'correct' => true], ['text' => "Tôi", 'correct' => false], ['text' => "Chúng ta", 'correct' => false], ['text' => "Anh ấy", 'correct' => false]]],
       ['q' => "Translate 'We' (exclusive)", 'answers' => [['text' => "Chúng tôi", 'correct' => true], ['text' => "Họ", 'correct' => false], ['text' => "Các bạn", 'correct' => false], ['text' => "Mọi người", 'correct' => false]]],
@@ -3777,7 +3777,7 @@ try {
         `${(currentIndex / questions.length) * 100}%`;
     }
     function handleCheck() {
-      const button = document.createElement("check-button");
+      const button = document.getElementById("check-button");
       if (isAnswered) {
         // Go to next question or finish
         currentIndex++;
@@ -4168,14 +4168,14 @@ try {
   $stmt = $pdo->prepare("SELECT username, email, xp, streak, accuracy, rank, created_at FROM users WHERE id = ?");
   $stmt->execute([$user_id]);
   $user = $stmt->fetch(PDO::FETCH_ASSOC);
-  $totalMinutes = ($user['xp'] > 0) ? round(($user['xp'] / 50) * 3) : 0;
-  $hoursSpent = floor($totalMinutes / 60) . "h " . ($totalMinutes % 60) . "m";
   if (!$user) {
     session_destroy();
     // User not found, redirect to login
     header('Location: login.php');
     exit();
   }
+  $totalMinutes = ($user['xp'] > 0) ? round(($user['xp'] / 50) * 3) : 0;
+  $hoursSpent = floor($totalMinutes / 60) . "h " . ($totalMinutes % 60) . "m";
   // Calculations
   $level = floor($user['xp'] / 200) + 1;
   $joinDate = date("F Y", strtotime($user['created_at']));
@@ -5078,7 +5078,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     function showStatus(type, message, icon) {
       const box = document.getElementById("status-box");
       const text = document.getElementById("status-text");
-      const icon = document.getElementById("status-icon");
+      const iconEl = document.getElementById("status-icon");
       box.className = `status-msg ${type}`;
       box.style.display = "flex";
       text.innerText = message;
@@ -6176,7 +6176,7 @@ try {
         document
           .querySelectorAll(".hidden-form")
           .forEach((f) => f.classList.remove("active"));
-        form.classList.remove("active");
+        form.classList.add("active");
         // Focus the first input of the revealed form smoothly
         setTimeout(() => {
           const firstInput = form.querySelector('input:not([type="hidden"])');

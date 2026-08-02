@@ -39,7 +39,7 @@ try {
 
   // <!-- // Total Lessons -->
   // ("SELECT COUNT(*) as count FROM category"); was the past thing below
-  $stmt = $pdo->query("SELECT COUNT(*) as count FROM lesons");
+  $stmt = $pdo->query("SELECT COUNT(*) as count FROM lessons");
   $total_lessons = $stmt->fetch()['count'];
 
   try{
@@ -48,7 +48,7 @@ try {
   $stmt = $pdo->query("SELECT COUNT(*) as count FROM questions");
   $total_questions = $stmt->fetch()['count'];
   }catch (PDOException $e) {
-    $total_questions = $total_lesons; // Default to 0 if the table doesn't exist. Or; Safe fallback count for prototype
+    $total_questions = $total_lessons; // Default to 0 if the table doesn't exist. Or; Safe fallback count for prototype
   }
   // <!-- // Average XP -->
   $stmt = $pdo->query("SELECT AVG(xp) as avg_xp FROM users");
