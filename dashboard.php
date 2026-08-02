@@ -34,7 +34,7 @@ try {
   }
 
   // Calculate Level (Simple logic: 1 Level per 200 XP)
-  $level = floor($userStats['xp'] / 200) + 1;
+  $level = floor($user['xp'] / 200) + 1;
 
   // --- 4. FETCH NEXT ACTIVE LESSON ---
   // Join lessons with user_progress to find the current 'active' lesson

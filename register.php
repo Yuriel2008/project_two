@@ -59,7 +59,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     exit;
 
   } catch (Exception $e) {
-    $status = $e->getMessage();
+    $getMessage = $e->getMessage();
     $statusType = 'error';
     $statusIcon = '⚠';
   }

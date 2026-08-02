@@ -1,4 +1,4 @@
-# codebase | 18 files | 2026-08-02 15:36:34
+# codebase | 18 files | 2026-08-02 15:42:51
 
 // 404.php
 <?php 
@@ -1970,7 +1970,7 @@ try {
     exit;
   }
   // Calculate Level (Simple logic: 1 Level per 200 XP)
-  $level = floor($userStats['xp'] / 200) + 1;
+  $level = floor($user['xp'] / 200) + 1;
   // --- 4. FETCH NEXT ACTIVE LESSON ---
   // Join lessons with user_progress to find the current 'active' lesson
   $lessonSmt = $pdo->prepare("
@@ -4778,7 +4778,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     header("Location: index.php");
     exit;
   } catch (Exception $e) {
-    $status = $e->getMessage();
+    $getMessage = $e->getMessage();
     $statusType = 'error';
     $statusIcon = 'âš ';
   }
