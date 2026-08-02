@@ -757,7 +757,7 @@ try {
   </main>
   <script>
     function confirmLogout() {
-      if (confirm("Are you sure you want to terminate you session?")) {
+      if (confirm("Are you sure you want to terminate your session?")) {
         // Triggers the PHP logout handler at the top of the file
         window.location.href = '?action=logout';
       }

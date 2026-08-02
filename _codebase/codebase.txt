@@ -1,4 +1,4 @@
-# codebase | 18 files | 2026-08-02 21:19:14
+# codebase | 18 files | 2026-08-02 21:34:30
 
 // 404.php
 <?php 
@@ -2166,7 +2166,7 @@ try {
     display: flex;
     align-items: center;
     gap: 15px;
-    transition: trannsform 0.2s;
+    transition: transform 0.2s;
   }
   .stats-hud {
     display: grid;
@@ -3602,7 +3602,7 @@ try {
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>LingoFlow v2 - <?php ?></title>
+  <title>LingoFlow v2 - <?php echo htmlspecialchars($lessonMeta['title']); ?></title>
   <style>
     :root {
       --bg-deep: #020617;
@@ -3714,7 +3714,7 @@ try {
       font-size: 18px;
       font-weight: bold;
       cursor: pointer;
-      opacity: 0.5s;
+      opacity: 0.5ss;
       pointer-events: none;
       transition: 0.2s;
     }
@@ -4111,7 +4111,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     /* Error Message */
     .error-msg {
       color: var(--red);
-      font-family: 13px;
+      font-size: 13px;
       margin-bottom: 15px;
       display: none;
       align-items: center;
@@ -4606,7 +4606,7 @@ try {
         justify-content: space-around;
         padding-top: 0;
         grid-row: 2;
-        border-right: navajowhite;
+        border-right: none;
         border-top: 1px solid var(--border);
         background: #020617;
       }
@@ -4686,7 +4686,7 @@ try {
     </header>
     <div class="profile-layout">
       <!-- LEFT: Identity Card -->
-      <div class="glass-panel identity card">
+      <div class="glass-panel identity-card">
         <div class="avatar-large">
           <?php echo strtoupper(substr($user['username'], 0, 1)); ?>
           <div class="edit-badge" title="Upload Avatar">����</div>
@@ -6236,7 +6236,7 @@ try {
   </main>
   <script>
     function confirmLogout() {
-      if (confirm("Are you sure you want to terminate you session?")) {
+      if (confirm("Are you sure you want to terminate your session?")) {
         // Triggers the PHP logout handler at the top of the file
         window.location.href = '?action=logout';
       }

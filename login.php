@@ -253,7 +253,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     /* Error Message */
     .error-msg {
       color: var(--red);
-      font-family: 13px;
+      font-size: 13px;
       margin-bottom: 15px;
       display: none;
       align-items: center;

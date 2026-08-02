@@ -256,7 +256,7 @@ try {
     display: flex;
     align-items: center;
     gap: 15px;
-    transition: trannsform 0.2s;
+    transition: transform 0.2s;
   }
 
   .stats-hud {

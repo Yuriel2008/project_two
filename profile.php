@@ -443,7 +443,7 @@ try {
         justify-content: space-around;
         padding-top: 0;
         grid-row: 2;
-        border-right: navajowhite;
+        border-right: none;
         border-top: 1px solid var(--border);
         background: #020617;
       }
@@ -532,7 +532,7 @@ try {
 
     <div class="profile-layout">
       <!-- LEFT: Identity Card -->
-      <div class="glass-panel identity card">
+      <div class="glass-panel identity-card">
         <div class="avatar-large">
           <?php echo strtoupper(substr($user['username'], 0, 1)); ?>
           <div class="edit-badge" title="Upload Avatar">📷</div>

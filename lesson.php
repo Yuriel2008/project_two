@@ -160,7 +160,7 @@ try {
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>LingoFlow v2 - <?php ?></title>
+  <title>LingoFlow v2 - <?php echo htmlspecialchars($lessonMeta['title']); ?></title>
   <style>
     :root {
       --bg-deep: #020617;
@@ -285,7 +285,7 @@ try {
       font-size: 18px;
       font-weight: bold;
       cursor: pointer;
-      opacity: 0.5s;
+      opacity: 0.5ss;
       pointer-events: none;
       transition: 0.2s;
     }
