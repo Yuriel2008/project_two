@@ -1,4 +1,4 @@
-# codebase | 17 files | 2026-08-01 21:09:10
+# codebase | 17 files | 2026-08-02 13:19:21
 
 // 404.php
 <?php 
@@ -1901,7 +1901,7 @@ function getAvatarColor($char)
               <td>
                 <span
                   class="status-badge <?php echo ($user_row['status'] === 'banned') ? 'status-banned' : 'status-active'; ?>">
-                  <?php echo $user_row['stauts'] ?? 'active'; ?> </span>
+                  <?php echo $user_row['status'] ?? 'active'; ?> </span>
               </td>
               <td style="color: var(--cyan);"><?php echo htmlspecialchars($user_row['rank'] ?? 'Unranked'); ?></td>
               <td style="color: var(--orange);">

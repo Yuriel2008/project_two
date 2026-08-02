@@ -499,7 +499,7 @@ function getAvatarColor($char)
               <td>
                 <span
                   class="status-badge <?php echo ($user_row['status'] === 'banned') ? 'status-banned' : 'status-active'; ?>">
-                  <?php echo $user_row['stauts'] ?? 'active'; ?> </span>
+                  <?php echo $user_row['status'] ?? 'active'; ?> </span>
               </td>
               <td style="color: var(--cyan);"><?php echo htmlspecialchars($user_row['rank'] ?? 'Unranked'); ?></td>
               <td style="color: var(--orange);">
