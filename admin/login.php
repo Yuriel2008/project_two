@@ -12,6 +12,7 @@ $db = 'lingoflow_db';
 $user = 'root';
 $pass = '';
 $port = '3306';
+$error_msg = "";
 
 $error = "";
 
@@ -49,7 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       header("Location: dashboard.php");
       exit();
     } else {
-      $error_msg = "ACCESS DENIED: IVALID CREDENTIALS OR INSUFFICIENT CLEARANCE.";
+      $error_msg = "ACCESS DENIED: INVALID CREDENTIALS OR INSUFFICIENT CLEARANCE.";
     }
 
   } catch (PDOException $e) {

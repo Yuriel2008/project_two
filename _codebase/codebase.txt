@@ -1,4 +1,4 @@
-# codebase | 18 files | 2026-08-02 20:27:06
+# codebase | 18 files | 2026-08-02 20:35:51
 
 // 404.php
 <?php 
@@ -1138,6 +1138,7 @@ $db = 'lingoflow_db';
 $user = 'root';
 $pass = '';
 $port = '3306';
+$error_msg = "";
 $error = "";
 // 2. Already logged in? Redirect to dashboard
 if (isset($_SESSION['user_id']) && $_SESSION['role'] === 'admin') {
@@ -1168,7 +1169,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       header("Location: dashboard.php");
       exit();
     } else {
-      $error_msg = "ACCESS DENIED: IVALID CREDENTIALS OR INSUFFICIENT CLEARANCE.";
+      $error_msg = "ACCESS DENIED: INVALID CREDENTIALS OR INSUFFICIENT CLEARANCE.";
     }
   } catch (PDOException $e) {
     $error_msg = "SYSTEM ERROR: " . $e->getMessage();
@@ -4102,7 +4103,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </label>
         <a href="#">Forgot Password?</a>
       </div>
-      <button type="submit" class="button-login">Initilaize System</button>
+      <button type="submit" class="button-login">Initialize System</button>
     </form>
     <!-- Footer -->
     <div class="register-link">
@@ -4742,6 +4743,7 @@ if (isset($_SESSION['user_id'])) {
 $status = null;
 $statusType = ''; // 'error' or 'success'
 $statusIcon = ''; // Icon for status message
+$getMessage = '';
 // --- 2. HANDLE FORM SUBMISSION ---
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   // Sanitize and validate inputs

@@ -11,6 +11,7 @@ if (isset($_SESSION['user_id'])) {
 $status = null;
 $statusType = ''; // 'error' or 'success'
 $statusIcon = ''; // Icon for status message
+$getMessage = '';
 
 // --- 2. HANDLE FORM SUBMISSION ---
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
