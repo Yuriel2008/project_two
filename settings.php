@@ -4,7 +4,6 @@ session_start();
 
 // --- 2. LOGOUT HANDLER ---
 if (isset($_GET['action']) && $_GET['action'] === 'logout') {
-  session_unset();
   // Unset all session variables
   $_SESSION = array();
 
@@ -760,7 +759,7 @@ try {
     function confirmLogout() {
       if (confirm("Are you sure you want to terminate you session?")) {
         // Triggers the PHP logout handler at the top of the file
-        window.location.href = "?action=logout";
+        window.location.href = "logout.php?";
       }
     }
 
