@@ -273,7 +273,7 @@ try {
             </tbody>
           </table>
         </div>
-        <a href="users.html"
+        <a href="users.php"
           class="block w-full text-center mt-4 p-2 text-xs text-gray-400 hover:text-cyan-400 transition-colors uppercase tracking-widest">View
           All Users</a>
       </div>

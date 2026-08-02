@@ -637,7 +637,7 @@ try {
               $colors = ['var(--green)', 'var(--orange)', 'var(--violet)', 'var(--cyan)'];
               $color = $isUnlocked ? $colors[$ach['id'] % 4] : '';
               ?>
-              <div class="achviement-item <?php echo $class; ?>">
+              <div class="achievement-item <?php echo $class; ?>">
                 <div class="ach-icon" style="<?php echo $isUnlocked ? "color: $color;" : ""; ?>">
                   <?php echo $ach['icon_emoji']; ?>
                 </div>

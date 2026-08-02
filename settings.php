@@ -714,7 +714,7 @@ try {
             <input type="password" name="current_password" class="form_input" placeholder="Current Password" required />
           </div>
           <div class="form-group">
-            <input type="password" name="password" class="form-input" placeholder="New Password (Min 6 chars)"
+            <input type="password" name="new_password" class="form-input" placeholder="New Password (Min 6 chars)"
               required />
           </div>
           <div class="form-group">

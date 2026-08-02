@@ -1,4 +1,4 @@
-# codebase | 17 files | 2026-08-02 14:02:18
+# codebase | 17 files | 2026-08-02 14:11:16
 
 // 404.php
 <?php 
@@ -1072,7 +1072,7 @@ try {
             </tbody>
           </table>
         </div>
-        <a href="users.html"
+        <a href="users.php"
           class="block w-full text-center mt-4 p-2 text-xs text-gray-400 hover:text-cyan-400 transition-colors uppercase tracking-widest">View
           All Users</a>
       </div>
@@ -4690,7 +4690,7 @@ try {
               $colors = ['var(--green)', 'var(--orange)', 'var(--violet)', 'var(--cyan)'];
               $color = $isUnlocked ? $colors[$ach['id'] % 4] : '';
               ?>
-              <div class="achviement-item <?php echo $class; ?>">
+              <div class="achievement-item <?php echo $class; ?>">
                 <div class="ach-icon" style="<?php echo $isUnlocked ? "color: $color;" : ""; ?>">
                   <?php echo $ach['icon_emoji']; ?>
                 </div>
@@ -6089,7 +6089,7 @@ try {
             <input type="password" name="current_password" class="form_input" placeholder="Current Password" required />
           </div>
           <div class="form-group">
-            <input type="password" name="password" class="form-input" placeholder="New Password (Min 6 chars)"
+            <input type="password" name="new_password" class="form-input" placeholder="New Password (Min 6 chars)"
               required />
           </div>
           <div class="form-group">
