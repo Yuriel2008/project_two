@@ -1,4 +1,4 @@
-# codebase | 17 files | 2026-08-02 14:19:35
+# codebase | 17 files | 2026-08-02 14:29:29
 
 // 404.php
 <?php 
@@ -236,7 +236,7 @@ http_response_code(404);
 // --- 1. SESSION & INIT ---
 session_start();
 // Basic Auth Check (In a real app, check for 'is_admin' role)
-if (!isset($_SESSION['admin_logged_in'])) {
+if (!isset($_SESSION['admin_logged_in']) || $_SESSION['role'] !== 'admin') {
   // For prototype, we assume if logged in, you can access. 
   // In production, redirect to admin/login.php
   header('Location: ../login.php');
@@ -5461,6 +5461,7 @@ try {
 <?php
 // --- 1. SESSION & INIT ---
 session_start();
+session_unset();
 // --- 2. LOGOUT HANDLER ---
 if (isset($_GET['action']) && $_GET['action'] === 'logout') {
   // Unset all session variables

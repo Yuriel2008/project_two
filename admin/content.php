@@ -3,7 +3,7 @@
 session_start();
 
 // Basic Auth Check (In a real app, check for 'is_admin' role)
-if (!isset($_SESSION['admin_logged_in'])) {
+if (!isset($_SESSION['admin_logged_in']) || $_SESSION['role'] !== 'admin') {
   // For prototype, we assume if logged in, you can access. 
   // In production, redirect to admin/login.php
   header('Location: ../login.php');
