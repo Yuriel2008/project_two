@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   // Sanitize and validate inputs
   $username = trim($_POST['username'] ?? '');
   $email = trim($_POST['email'] ?? '');
-  $pass = $_POST['pass'] ?? '';
+  $pass = $_POST['password'] ?? '';
   $confirmPassword = $_POST['confirm-password'] ?? '';
 
   try {

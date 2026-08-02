@@ -617,23 +617,25 @@ try {
           </tr>
         </thead>
         <tbody>
-          <?php foreach($lessons as $lesson): ?>
-          <tr>
-            <td style="color: var(--text-muted);"><?php echo htmlspecialchars($lesson['id']); ?></td>
-            <td style="font-weight: bold; color: white;"><?php echo htmlspecialchars($lesson['title']); ?></td>
-            <td><?php echo htmlspecialchars($lesson['category']); ?></td>
-            <td><span style="color: var(--violet);"><?php echo $lesson['xp_value']; ?> XP</span></td>
-            <td><span class="status-badge status-published">Published</span></td>
-            <td style="color: var(--text-muted);"><?php echo date("Y-m-d"); ?></td>
-            <div class="action-row" style="justify-content: flex-end;">
-              <!-- Delete Action -->
-              <form method="POST" style="margin: 0;" onsubmit="return confirm('Delete this lesson?')">
-                <input type="hidden" name="action" value="delete">
-                <input type="hidden" name="id" value="<?php echo htmlspecialchars($lesson['id']); ?>">
-                <button class="action-icon action-delete" title="Delete" style="border: none;">🗑</button>
-              </form>
-            </div>
-          </tr>
+          <?php foreach ($lessons as $lesson): ?>
+            <tr>
+              <td style="color: var(--text-muted);"><?php echo htmlspecialchars($lesson['id']); ?></td>
+              <td style="font-weight: bold; color: white;"><?php echo htmlspecialchars($lesson['title']); ?></td>
+              <td><?php echo htmlspecialchars($lesson['category']); ?></td>
+              <td><span style="color: var(--violet);"><?php echo $lesson['xp_value']; ?> XP</span></td>
+              <td><span class="status-badge status-published">Published</span></td>
+              <td style="color: var(--text-muted);"><?php echo date("Y-m-d"); ?></td>
+              <td>
+                <div class="action-row" style="justify-content: flex-end;">
+                  <!-- Delete Action -->
+                  <form method="POST" style="margin: 0;" onsubmit="return confirm('Delete this lesson?')">
+                    <input type="hidden" name="action" value="delete">
+                    <input type="hidden" name="id" value="<?php echo htmlspecialchars($lesson['id']); ?>">
+                    <button class="action-icon action-delete" title="Delete" style="border: none;">🗑</button>
+                  </form>
+                </div>
+              </td>
+            </tr>
           <?php endforeach; ?>
         </tbody>
       </table>
