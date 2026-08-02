@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   // Sanitize and validate inputs
   $username = trim($_POST['username'] ?? '');
   $email = trim($_POST['email'] ?? '');
-  $pass = $_POST['password'] ?? '';
+  $pass = $_POST['pass'] ?? '';
   $confirmPassword = $_POST['confirm-password'] ?? '';
 
   try {
@@ -346,7 +346,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </form>
     <!-- Footer -->
     <div class="login-link">
-      Already have an account? <a href="login.html">Log In</a>
+      Already have an account? <a href="login.php">Log In</a>
     </div>
   </div>
   <script>

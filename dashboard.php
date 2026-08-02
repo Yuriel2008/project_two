@@ -4,7 +4,7 @@ session_start();
 
 // Redirect to login if session is missing
 if (!isset($_SESSION['user_id'])) {
-  header("Location: login.html");
+  header("Location: login.php");
   exit;
 }
 
@@ -29,7 +29,7 @@ try {
   if (!$user) {
     // User invalid/deleted, kill session
     session_destroy();
-    header("Location: login.html");
+    header("Location: login.php");
     exit;
   }
 
@@ -534,7 +534,7 @@ try {
           System Online. Welcome back, <strong><?php echo htmlspecialchars($user['username']); ?></strong>.
         </p>
       </div>
-      <div class="user-badge" onclick="window.location.href = 'profile.html'" style="cursor: pointer">
+      <div class="user-badge" onclick="window.location.href = 'profile.php'" style="cursor: pointer">
         <div class="avatar-small"><?php echo strtoupper(substr($user['username'], 0, 1)); ?></div>
         <div>
           <div style="font-weight: bold; font-size: 14px">
@@ -586,7 +586,7 @@ try {
           </p>
 
           <button class="button-primary"
-            onclick="window.location.href = 'lesson.html?type=<?php echo htmlspecialchars($nextLesson['id']); ?>'">
+            onclick="window.location.href = 'lesson.php?type=<?php echo htmlspecialchars($nextLesson['id']); ?>'">
             <span>Resume Path</span>
             <svg fill="#000000" width="18" height="18" viewBox="0 0 24 24" id="right" data-name="Flat Color"
               xmlns="http://www.w3.org/2000/svg" class="icon flat-color">
@@ -598,7 +598,7 @@ try {
         <?php else: ?>
           <p style="color: var(--text-muted); margin: 10px 0 0 0; z-index: 1;">You are up to date! Review completed
             lessons?</p>
-          <button class="button-primary" onclick="window.location.href = 'roadmap.html'">
+          <button class="button-primary" onclick="window.location.href = 'roadmap.php'">
             <span>View Roadmap</span>
           </button>
         <?php endif; ?>
@@ -629,35 +629,35 @@ try {
     <div>
       <div class="grid-header">
         <h3 style="margin: 0;">Quick Practice</h3>
-        <a href="roadmap.html"
+        <a href="roadmap.php"
           style="color: var(--violet); text-decoration: none; font-size: 14px; font-weight: bold;">View All &rarr;</a>
       </div>
 
       <div class="categories-grid">
         <!-- Emotion Lesson -->
         <?php $st = getGridStatus('emotions', $rawStatuses); ?>
-        <div class="glass-panel cat-box <?php echo ($st == 'locked') ? 'locked' : ''; ?>" <?php if ($st != 'locked'): ?>onclick="window.location.href='lesson.html?type=emotions'" <?php endif; ?>>
+        <div class="glass-panel cat-box <?php echo ($st == 'locked') ? 'locked' : ''; ?>" <?php if ($st != 'locked'): ?>onclick="window.location.href='lesson.php?type=emotions'" <?php endif; ?>>
           <div class="cat-emoji">😊</div>
           <strong>Emotions</strong>
         </div>
 
         <!-- Number Lesson -->
         <?php $st = getGridStatus('number1', $rawStatuses); ?>
-        <div class="glass-panel cat-box <?php echo ($st == 'locked') ? 'locked' : ''; ?>" <?php if ($st != 'locked'): ?>onclick="window.location.href='lesson.html?type=nmbers1'" <?php endif; ?>>
+        <div class="glass-panel cat-box <?php echo ($st == 'locked') ? 'locked' : ''; ?>" <?php if ($st != 'locked'): ?>onclick="window.location.href='lesson.php?type=nmbers1'" <?php endif; ?>>
           <div class="cat-emoji">🔢</div>
           <strong>Numbers</strong>
         </div>
 
         <!-- Greetings Lesson -->
         <?php $st = getGridStatus('repect', $rawStatuses); ?>
-        <div class="glass-panel cat-box <?php echo ($st == 'locked') ? 'locked' : ''; ?>" <?php if ($st != 'locked'): ?>onclick="window.location.href='lesson.html?type=respect'" <?php endif; ?>>
+        <div class="glass-panel cat-box <?php echo ($st == 'locked') ? 'locked' : ''; ?>" <?php if ($st != 'locked'): ?>onclick="window.location.href='lesson.php?type=respect'" <?php endif; ?>>
           <div class="cat-emoji">🤝</div>
           <strong>Greetings</strong>
         </div>
 
         <!-- Locked Lesson -->
         <?php $st = getGridStatus('food', $rawStatuses); ?>
-        <div class="glass-panel cat-box <?php echo ($st == 'locked') ? 'locked' : ''; ?>" <?php if ($st != 'locked'): ?>onclick="window.location.href = 'lesson.html?type=food'" <?php endif; ?>>
+        <div class="glass-panel cat-box <?php echo ($st == 'locked') ? 'locked' : ''; ?>" <?php if ($st != 'locked'): ?>onclick="window.location.href = 'lesson.php?type=food'" <?php endif; ?>>
           <div class="cat-emoji">🍔</div>
           <strong>Food</strong>
         </div>

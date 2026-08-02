@@ -624,7 +624,7 @@ try {
             <td><?php echo htmlspecialchars($lesson['category']); ?></td>
             <td><span style="color: var(--violet);"><?php echo $lesson['xp_value']; ?> XP</span></td>
             <td><span class="status-badge status-published">Published</span></td>
-            <td style="color: var(--text-muted);"></td><?php echo date("Y-m-d"); ?></td>
+            <td style="color: var(--text-muted);"><?php echo date("Y-m-d"); ?></td>
             <div class="action-row" style="justify-content: flex-end;">
               <!-- Delete Action -->
               <form method="POST" style="margin: 0;" onsubmit="return confirm('Delete this lesson?')">

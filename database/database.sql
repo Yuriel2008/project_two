@@ -156,7 +156,7 @@ VALUES
         '2026-02-13 17:15:00'
     );
 
--- Seed Lessons Table (based on roadmap.html & lesson.html)
+-- Seed Lessons Table (based on roadmap.php & lesson.php)
 INSERT INTO
     `lessons` (
         `id`,
@@ -224,7 +224,7 @@ VALUES
         7
     );
 
--- Seed User Progress for 'Learner' (id=1) to match roadmap.html
+-- Seed User Progress for 'Learner' (id=1) to match roadmap.php
 INSERT INTO
     `user_progress` (`user_id`, `lesson_id`, `status`)
 VALUES

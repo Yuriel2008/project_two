@@ -300,14 +300,14 @@ try {
                 </div>
               </div>
 
-              <a href="content.html?edit=<?php echo $lesson['id']; ?>"
+              <a href="content.php?edit=<?php echo $lesson['id']; ?>"
                 class="opacity-0 group-hover:opacity-100 p-2 text-gray-400 hover:text-while transition-all">
                 <i class="fas fa-edit"></i>
               </a>
             </div>
           <?php endforeach; ?>
         </div>
-        <a href="content.html"
+        <a href="content.php"
           class="block w-full text-center mt-6 p-2 text-xs text-gray-400 hover:text-purple-400 transition-coloers uppercase tracking-widest">
           Manage All Content
         </a>

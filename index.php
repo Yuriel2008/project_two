@@ -4,7 +4,7 @@ session_start();
 
 // Redirect to login if session is missing
 if (!isset($_SESSION['user_id'])) {
-  header('Location: login.html');
+  header('Location: login.php');
   exit;
 }
 
@@ -29,7 +29,7 @@ try {
   if (!$user) {
     // User invalid/deleted, kill session
     session_destroy();
-    header("Location: login.html");
+    header("Location: login.php");
     exit;
   }
 
@@ -486,7 +486,7 @@ LIMIT 1
         </p>
       </div>
       <!-- div-one was the previous under this text of class -->
-      <div class="user-badge" onclick="window.location.href = 'profile.html'" style="cursor: pointer">
+      <div class="user-badge" onclick="window.location.href = 'profile.php'" style="cursor: pointer">
         <!-- div-two was the previous name under this text for class -->
         <div class="avatar-small"><?php echo strtoupper(substr($user['username'], 0, 1)); ?></div>
         <div>
@@ -581,7 +581,7 @@ LIMIT 1
       <div class="glass-panel goal-card">
         <h3>Daily Goal</h3>
         <div class="progress-track">
-          <div class="progress-fill" style="width: <?php echo $dailyPercent; ?>;%"></div>
+          <div class="progress-fill" style="width: <?php echo $dailyPercent; ?>%;"></div>
         </div>
         <div class="goal-text">
           <span><?php echo $dailyProgress; ?>

@@ -33,7 +33,7 @@ try {
   $lessonMeta = $stmt->fetch(PDO::FETCH_ASSOC);
 
   if (!$lessonMeta) {
-    header("Location: index.html");
+    header("Location: index.php");
     exit();
   }
 
@@ -428,7 +428,7 @@ try {
         b.onclick = () => {
           if (isAnswered) return;
           document
-            .querySelectorAll(".option-buttons")
+            .querySelectorAll(".option-button")
             .forEach((el) => el.classList.remove("selected"));
           b.classList.add("selected");
           selectedOption = b;

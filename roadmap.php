@@ -374,7 +374,7 @@ try {
     </button>
 
     <!--3. Stats-->
-    <button class="icon-button" onclick="window.location.href='stats.html'" aria-label="Stats">
+    <button class="icon-button" onclick="window.location.href='stats.php'" aria-label="Stats">
       <!-- < ?xml version="1.0" encoding="utf-8"?> -->
       <!-- License: MIT. Made by Tienda Nube: https://github.com/TiendaNube/nimbus-icons -->
       <svg fill="#000000" width="24" height="24" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
@@ -437,7 +437,7 @@ try {
                 <span>✓</span> Complete
               </div>
             <?php elseif ($status === 'active'): ?>
-              <a href="lesson.html?type=<?php echo htmlspecialchars($item['id']); ?>" class="button-start">Continue
+              <a href="lesson.php?type=<?php echo htmlspecialchars($item['id']); ?>" class="button-start">Continue
                 &nbsp;</a>
             <?php else: //locked ?>
               <div class="status-text">

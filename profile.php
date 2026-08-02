@@ -634,10 +634,10 @@ try {
               $isUnlocked = in_array($ach['id'], $unlockIds);
               $class = $isUnlocked ? '' : 'locked';
               // <!-- // Simple color rotation based on ID for visuals, or default -->
-              $colors = ['var(--green), var(--orange), var(--violet), var(--cyan)'];
+              $colors = ['var(--green)', 'var(--orange)', 'var(--violet)', 'var(--cyan)'];
               $color = $isUnlocked ? $colors[$ach['id'] % 4] : '';
               ?>
-              <div class="achviement-item" <?php echo $class; ?>>
+              <div class="achviement-item <?php echo $class; ?>">
                 <div class="ach-icon" style="<?php echo $isUnlocked ? "color: $color;" : ""; ?>">
                   <?php echo $ach['icon_emoji']; ?>
                 </div>

@@ -352,7 +352,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <!-- Footer -->
     <div class="return-link">
-      <a href="../login.html">
+      <a href="../login.php">
         <!-- < ?xml version="1.0" encoding="utf-8"?> -->
         <!-- License: PD. Made by Mary Akveo: https://maryakveo.com/ -->
         <svg fill="#000000" width="14" height="14" viewBox="0 0 24 24" id="left" data-name="Flat Color"
