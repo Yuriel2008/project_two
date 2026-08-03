@@ -212,16 +212,9 @@ try {
     }
 
     .icon-button:hover {
-      width: 48px;
-      height: 48px;
-      border-radius: 12px;
-      border: none;
-      background: transparent;
-      color: #64748b;
-      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      background: rgba(255, 255, 255, 0.01);
+      color: white;
+      transform: scale(1.05);
     }
 
     .icon-button.active {

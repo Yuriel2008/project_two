@@ -425,7 +425,6 @@ try {
       background: var(--bg-deep);
       border: 1px solid var(--violet);
       padding: 30px;
-      ;
       border-radius: 20px;
       width: 400px;
     }

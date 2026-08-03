@@ -328,7 +328,7 @@ try {
     gap: 10px;
   }
 
-  .button-primary.stats-card:hover {
+  .button-primary:hover {
     background: #7c3aed;
     transform: scale(1, 02);
   }
