@@ -281,7 +281,7 @@ try {
 
     /* Modifiers for Locked Cards */
     .timeline-item.locked .roadmap-card {
-      opacity: 0.5s;
+      opacity: 0.5;
       border-color: transparent;
       cursor: not-allowed;
     }

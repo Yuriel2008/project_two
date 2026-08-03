@@ -166,7 +166,7 @@ try {
       </div>
     <?php endif; ?>
 
-    <div class="flex justify-between item-end mb-8">
+    <div class="flex justify-between items-end mb-8">
       <div>
         <h2 class="text-3xl font-bold">System Overview</h2>
         <p class="text-gray-400">
@@ -182,7 +182,7 @@ try {
     </div>
 
     <!--Stats Grid-->
-    <div class="grid grid-cols-1 md:gri-cols-2 lg:grid-cols-4 gap-6 mb-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
       <div class="glass-panel p-6 neon-border-cyan">
         <div class="flex justify-between items-start">
           <div>
@@ -259,7 +259,7 @@ try {
                 <th class="pb-3 font-medium text-right">XP</th>
               </tr>
             </thead>
-            <tbody class="divide-y divine-white/5">
+            <tbody class="divide-y divide-white/5">
               <?php foreach ($recent_users as $row): ?>
                 <tr>
                   <td class="py-4">
@@ -268,7 +268,7 @@ try {
                   </td>
                   <td class="px-4 text-center">
                     <span
-                      class="px-2 py-1 bg-cyan-500/10 text-cyan-400 text-[10px] round border border-cyan-500/30 uppercase"><?php echo htmlspecialchars($row['rank']); ?></span>
+                      class="px-2 py-1 bg-cyan-500/10 text-cyan-400 text-[10px] rounded border border-cyan-500/30 uppercase"><?php echo htmlspecialchars($row['rank']); ?></span>
                   </td>
                   <td class="py-4 text-center font-mono text-sm text-yellow-500">
                     >><?php echo number_format($row['xp']); ?>

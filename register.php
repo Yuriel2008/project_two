@@ -34,7 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (empty($username) || empty($email) || empty($pass)) {
       throw new Exception("All fields are required.");
     }
-    if ($pass !== $confirmPass) {
+    if ($pass !== $confirmPassword) {
       throw new Exception("Passwords do not match.");
     } elseif (strlen($pass) < 6) {
       throw new Exception("Password must be at least 6 characters long.");

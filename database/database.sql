@@ -28,6 +28,8 @@ CREATE TABLE `users` (
     `streak` INT(11) NOT NULL DEFAULT 0,
     `accuracy` DECIMAL(5, 2) default 87.00,
     `rank` VARCHAR(50) DEFAULT 'Silver II',
+    `role` VARCHAR(20) NOT NULL DEFAULT 'learner',
+    `status` VARCHAR(20) NOT NULL DEFAULT 'active',
     `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     `last_login` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     PRIMARY KEY (`id`),
@@ -46,6 +48,7 @@ CREATE TABLE `lessons` (
     `description` VARCHAR(255) DEFAULT NULL,
     `xp_value` INT(11) NOT NULL DEFAULT 50,
     `sort_order` INT(11) NOT NULL,
+    `type` VARCHAR(20) NOT NULL DEFAULT 'lesson',
     PRIMARY KEY (`id`)
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;
 

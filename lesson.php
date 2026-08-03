@@ -285,7 +285,7 @@ try {
       font-size: 18px;
       font-weight: bold;
       cursor: pointer;
-      opacity: 0.5ss;
+      opacity: 0.5;
       pointer-events: none;
       transition: 0.2s;
     }

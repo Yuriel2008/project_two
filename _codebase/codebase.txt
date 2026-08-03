@@ -1,4 +1,4 @@
-# codebase | 18 files | 2026-08-03 12:03:53
+# codebase | 18 files | 2026-08-03 15:22:16
 
 // 404.php
 <?php 
@@ -553,8 +553,12 @@ try {
       border-color: var(--cyan);
     }
     .action-delete {
+      background: rgba(239, 68, 68, 0.1);
+      color: var(--red);
+    }
+    .action-delete:hover {
       background: rgba(239, 68, 68, 0.2);
-      border-color: 20px;
+      border-color: var(--red);
     }
     /* --- 6. STATS PREVIEW --- */
     .stats-strip {
@@ -971,7 +975,7 @@ try {
         <?php echo $error_msg; ?>
       </div>
     <?php endif; ?>
-    <div class="flex justify-between item-end mb-8">
+    <div class="flex justify-between items-end mb-8">
       <div>
         <h2 class="text-3xl font-bold">System Overview</h2>
         <p class="text-gray-400">
@@ -986,7 +990,7 @@ try {
       </div>
     </div>
     <!--Stats Grid-->
-    <div class="grid grid-cols-1 md:gri-cols-2 lg:grid-cols-4 gap-6 mb-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
       <div class="glass-panel p-6 neon-border-cyan">
         <div class="flex justify-between items-start">
           <div>
@@ -1059,7 +1063,7 @@ try {
                 <th class="pb-3 font-medium text-right">XP</th>
               </tr>
             </thead>
-            <tbody class="divide-y divine-white/5">
+            <tbody class="divide-y divide-white/5">
               <?php foreach ($recent_users as $row): ?>
                 <tr>
                   <td class="py-4">
@@ -1068,7 +1072,7 @@ try {
                   </td>
                   <td class="px-4 text-center">
                     <span
-                      class="px-2 py-1 bg-cyan-500/10 text-cyan-400 text-[10px] round border border-cyan-500/30 uppercase"><?php echo htmlspecialchars($row['rank']); ?></span>
+                      class="px-2 py-1 bg-cyan-500/10 text-cyan-400 text-[10px] rounded border border-cyan-500/30 uppercase"><?php echo htmlspecialchars($row['rank']); ?></span>
                   </td>
                   <td class="py-4 text-center font-mono text-sm text-yellow-500">
                     >><?php echo number_format($row['xp']); ?>
@@ -1572,7 +1576,7 @@ function getAvatarColor($char)
     }
     .sidebar {
       background: rgba(255, 255, 255, 0.02);
-      border-radius: 1px solid var(--border);
+      border-right: 1px solid var(--border);
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -2562,6 +2566,8 @@ CREATE TABLE `users` (
     `streak` INT(11) NOT NULL DEFAULT 0,
     `accuracy` DECIMAL(5, 2) default 87.00,
     `rank` VARCHAR(50) DEFAULT 'Silver II',
+    `role` VARCHAR(20) NOT NULL DEFAULT 'learner',
+    `status` VARCHAR(20) NOT NULL DEFAULT 'active',
     `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     `last_login` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     PRIMARY KEY (`id`),
@@ -2579,6 +2585,7 @@ CREATE TABLE `lessons` (
     `description` VARCHAR(255) DEFAULT NULL,
     `xp_value` INT(11) NOT NULL DEFAULT 50,
     `sort_order` INT(11) NOT NULL,
+    `type` VARCHAR(20) NOT NULL DEFAULT 'lesson',
     PRIMARY KEY (`id`)
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;
 -- Section 6: Questions Table & Seed Data
@@ -3714,7 +3721,7 @@ try {
       font-size: 18px;
       font-weight: bold;
       cursor: pointer;
-      opacity: 0.5ss;
+      opacity: 0.5;
       pointer-events: none;
       transition: 0.2s;
     }
@@ -4834,7 +4841,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (empty($username) || empty($email) || empty($pass)) {
       throw new Exception("All fields are required.");
     }
-    if ($pass !== $confirmPass) {
+    if ($pass !== $confirmPassword) {
       throw new Exception("Passwords do not match.");
     } elseif (strlen($pass) < 6) {
       throw new Exception("Password must be at least 6 characters long.");
@@ -5410,7 +5417,7 @@ try {
     }
     /* Modifiers for Locked Cards */
     .timeline-item.locked .roadmap-card {
-      opacity: 0.5s;
+      opacity: 0.5;
       border-color: transparent;
       cursor: not-allowed;
     }
@@ -5650,7 +5657,7 @@ try {
       } else {
         $stmt = $pdo->prepare("UPDATE users SET password = ? WHERE id = ?");
         $stmt->execute([$new_password, $user_id]);
-        $statusMsg = "Security passcode successfully upload.";
+        $statusMsg = "Security passcode successfully updated.";
         $statusType = "success";
       }
     }
@@ -6354,7 +6361,7 @@ try {
     /* --- 2. SIDEBAR NAVIGATION --- */
     .sidebar {
       background: rgba(255, 255, 255, 0.02);
-      border-radius: 1px solid var(--border);
+      border-right: 1px solid var(--border);
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -6540,18 +6547,18 @@ try {
       background: rgba(255, 255, 255, 0.03);
       border: 1px solid var(--border);
     }
-    .ach-info {
+    .ach-info h4 {
       margin: 0;
       font-size: 15px;
     }
-    .ach-info {
+    .ach-info  p {
       margin: 4px 0 0 0;
       font-size: 12px;
       color: var(--text-muted);
     }
     /* Locked State Styling */
     .ach-card.locked {
-      opacity: 0.5s;
+      opacity: 0.5;
       filter: grayscale(1);
     }
     .ach-card.locked .ach-icon {

@@ -100,7 +100,7 @@ try {
       } else {
         $stmt = $pdo->prepare("UPDATE users SET password = ? WHERE id = ?");
         $stmt->execute([$new_password, $user_id]);
-        $statusMsg = "Security passcode successfully upload.";
+        $statusMsg = "Security passcode successfully updated.";
         $statusType = "success";
       }
     }

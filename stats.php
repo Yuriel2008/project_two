@@ -103,7 +103,7 @@ try {
     /* --- 2. SIDEBAR NAVIGATION --- */
     .sidebar {
       background: rgba(255, 255, 255, 0.02);
-      border-radius: 1px solid var(--border);
+      border-right: 1px solid var(--border);
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -316,12 +316,12 @@ try {
       border: 1px solid var(--border);
     }
 
-    .ach-info {
+    .ach-info h4 {
       margin: 0;
       font-size: 15px;
     }
 
-    .ach-info {
+    .ach-info  p {
       margin: 4px 0 0 0;
       font-size: 12px;
       color: var(--text-muted);
@@ -329,7 +329,7 @@ try {
 
     /* Locked State Styling */
     .ach-card.locked {
-      opacity: 0.5s;
+      opacity: 0.5;
       filter: grayscale(1);
     }
 

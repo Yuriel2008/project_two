@@ -369,8 +369,13 @@ try {
     }
 
     .action-delete {
+      background: rgba(239, 68, 68, 0.1);
+      color: var(--red);
+    }
+
+    .action-delete:hover {
       background: rgba(239, 68, 68, 0.2);
-      border-color: 20px;
+      border-color: var(--red);
     }
 
     /* --- 6. STATS PREVIEW --- */

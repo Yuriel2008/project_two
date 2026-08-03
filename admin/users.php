@@ -117,7 +117,7 @@ function getAvatarColor($char)
 
     .sidebar {
       background: rgba(255, 255, 255, 0.02);
-      border-radius: 1px solid var(--border);
+      border-right: 1px solid var(--border);
       display: flex;
       flex-direction: column;
       align-items: center;
