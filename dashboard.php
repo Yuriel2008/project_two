@@ -330,7 +330,7 @@ try {
 
   .button-primary:hover {
     background: #7c3aed;
-    transform: scale(1,02);
+    transform: scale(1.02);
   }
 
   /* Daily Goal */

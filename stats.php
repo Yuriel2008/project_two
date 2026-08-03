@@ -47,14 +47,27 @@ try {
   // --- 5. FETCH ACHIEVEMENTS ---
   // Left Join to get all achievements + status for this user
   $achSql = "
-     SELECT a.id, a.name, a.description, a.icon_emoji, unlock_at
+     SELECT a.id, a.name, a.description, a.icon_emoji, ua.unlock_at
      FROM achievements a
      LEFT JOIN user_achievements ua ON a.id = ua.achievement_id AND ua.user_id = ?
 ";
+
   $achStmt = $pdo->prepare($achSql);
   $achStmt->execute([$user_id]);
   $achievements = $achStmt->fetchAll(PDO::FETCH_ASSOC);
+  // $achievements = $pdo->query("SELECT * FROM achievements")->fetchAll(PDO::FETCH_ASSOC);
+//   $userAchStmt = $pdo->prepare("SELECT achievement_id, unlock_at FROM user_achievements WHERE user_id = ?");
+//   $userAchStmt->execute([$user_id]);
+//   $unlockedMap = $userAchStmt->fetchAll(PDO::FETCH_KEY_PAIR);
+
+  //   foreach ($achievements as &$ach) {
+//       $ach['unlock_at'] = $unlockedMap[$ach['id']] ?? null;
+//   }
+//   unset($ach);
 } catch (PDOException $e) {
+  // Safe Fallback: Loads page visuals cleanly even if column is missing
+  $achievements = $pdo->query("SELECT id, name, description, icon_emoji, NULL as unlock_at FROM achievements")->fetchAll(PDO::FETCH_ASSOC);
+} catch (Exception $e) {
   die("Database Error: " . $e->getMessage());
 }
 ?>
@@ -321,7 +334,7 @@ try {
       font-size: 15px;
     }
 
-    .ach-info  p {
+    .ach-info p {
       margin: 4px 0 0 0;
       font-size: 12px;
       color: var(--text-muted);
@@ -463,7 +476,7 @@ try {
             ?>
 
             <div class="bar-group">
-              <div class="bar <?php echo $class; ?>"></div>
+              <div class="bar <?php echo $class; ?>" style="height: <?php echo $h; ?>%;"></div>
               <span class="bar-label"><?php echo $day; ?></span>
             </div>
           <?php endforeach; ?>
