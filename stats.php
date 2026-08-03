@@ -271,7 +271,7 @@ try {
 
     .stat-label {
       font-size: 14px;
-      columns: var(--text-muted);
+      color: var(--text-muted);
     }
 
     .stat-value {

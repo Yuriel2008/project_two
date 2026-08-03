@@ -88,7 +88,7 @@ LIMIT 1
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>LingoeFlow v2 - Dashboard</title>
+  <title>LingoFlow v2 - Dashboard</title>
   <style>
     /* --- 1. CSS VARIABLES & RESET --- */
     :root {

@@ -306,7 +306,7 @@ try {
     background: radial-gradient(circle,
         var(--violet-glow) 0%,
         transparent 70%);
-    opacity: 0.4s;
+    opacity: 0.4;
     pointer-events: none;
   }
 
@@ -396,7 +396,7 @@ try {
 
   /* Locked State Helper */
   .cat-box.locked {
-    opacity: 0.5s;
+    opacity: 0.5;
     cursor: not-allowed;
     filter: grayscale(1);
   }

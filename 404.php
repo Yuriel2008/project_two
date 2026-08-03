@@ -8,7 +8,7 @@ http_response_code(404);
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>LingoeFlow v2 - System Error 404</title>
+    <title>LingoFlow v2 - System Error 404</title>
     <style>
       /* --- 1. CSS VARIABLES & RESET --- */
       :root {

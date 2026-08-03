@@ -129,23 +129,23 @@ try {
     </div>
 
     <nav class="flex-1 px-4 space-y-2 mt-4">
-      <a href="dashboard.php" class="sidebar-link flex item-center p-3 text-cyan-400 bg-cyan-400/10 rounded-lg">
+      <a href="dashboard.php" class="sidebar-link flex items-center p-3 text-cyan-400 bg-cyan-400/10 rounded-lg">
         <i class="fas fa-chart-line mr-3"></i> Dashboard
       </a>
-      <a href="users.php" class="sidebar-link flex item-center p-3 text-cyan-400 rounded-lg transition-all">
+      <a href="users.php" class="sidebar-link flex items-center p-3 text-cyan-400 rounded-lg transition-all">
         <i class="fas fa-users mr-3"></i> Manage users
       </a>
-      <a href="content.php" class="sidebar-link flex item-center p-3 text-gray-400 rounded-lg transition-all">
+      <a href="content.php" class="sidebar-link flex items-center p-3 text-gray-400 rounded-lg transition-all">
         <i class="fas fa-book mr-3"></i> Lesson Content
       </a>
-      <a href="../logout.php" class="sidebar-link flex item-center p-3 text-red-400 rounded-lg transition-all">
+      <a href="../logout.php" class="sidebar-link flex items-center p-3 text-red-400 rounded-lg transition-all">
         <i class="fas fa-sign-out-alt mr-3"></i> Terminate Session
       </a>
     </nav>
 
     <div class="p-4 glass-panel m-4 mt-auto">
       <div class="flex items-center space-y-1">
-        <div class="w-8 h-8 rounded-full bg-cyan-500 flex item-center justify-center mr-3">
+        <div class="w-8 h-8 rounded-full bg-cyan-500 flex items-center justify-center mr-3">
           <i class="fas fa-user-shield text-xs"></i>
         </div>
         <div>
@@ -160,7 +160,7 @@ try {
   <main class="flex-1 p-8 overflow-y-auto">
     <!--Error Placeholder-->
     <?php if ($error_msg): ?>
-      <div class="bg-red-500/20 border-red-500 text-red-200 p-4 rounded-lg mb-6 flex item-center">
+      <div class="bg-red-500/20 border-red-500 text-red-200 p-4 rounded-lg mb-6 flex items-center">
         <i class="fas fa-exclamation-triangle mr-3"></i>
         <?php echo $error_msg; ?>
       </div>
@@ -184,7 +184,7 @@ try {
     <!--Stats Grid-->
     <div class="grid grid-cols-1 md:gri-cols-2 lg:grid-cols-4 gap-6 mb-8">
       <div class="glass-panel p-6 neon-border-cyan">
-        <div class="flex justify-between item-start">
+        <div class="flex justify-between items-start">
           <div>
             <p class="text-gray-400 text-sm">Total Operatives</p>
             <h3 class="text-3xl font-bold mt-1"><?php echo number_format($total_users); ?></h3>
@@ -199,7 +199,7 @@ try {
       </div>
 
       <div class="glass-panel p-6">
-        <div class="flex justify-between item-start">
+        <div class="flex justify-between items-start">
           <div>
             <p class="text-gray-400 text-sm">Active Modules</p>
             <h3 class="text-3xl font-bold mt-1"><?php echo $total_lessons; ?></h3>
@@ -214,7 +214,7 @@ try {
       </div>
 
       <div class="glass-panel p-6">
-        <div class="flex justify-between item-start">
+        <div class="flex justify-between items-start">
           <div>
             <p class="text-gray-400 text-sm">Neural XP Avg</p>
             <h3 class="text-3xl font-bold mt-1"><?php echo number_format($avg_xp); ?></h3>
@@ -229,7 +229,7 @@ try {
       </div>
 
       <div class="glass-panel p-6">
-        <div class="flex justify-between item-start">
+        <div class="flex justify-between items-start">
           <div>
             <p class="text-gray-400 text-sm">Data Nodes</p>
             <h3 class="text-3xl font-bold mt-1"><?php echo $total_questions; ?></h3>
@@ -247,7 +247,7 @@ try {
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
       <!-- Recent Users -->
       <div class="glass-panel p-6">
-        <h3 class="text-xl font-bold mb-4 flex item-center">
+        <h3 class="text-xl font-bold mb-4 flex items-center">
           <i class="fas fa-user-plus mr-3 text-cyan-400"></i> New Operatives
         </h3>
         <div class="overflow-x-auto">
@@ -293,8 +293,8 @@ try {
           <?php foreach ($recent_lessons as $lesson): ?>
             <div>
               <div
-                class="flex item-center justify-between p-3 bg-white/5 rounded-lg border border-white/5 hover:border-purple-500/50 transition-all group">
-                <div class="w-10 h-10 rounded bg-purple-500/20 flex item-center justify-center mr-4 text-purple-400">
+                class="flex items-center justify-between p-3 bg-white/5 rounded-lg border border-white/5 hover:border-purple-500/50 transition-all group">
+                <div class="w-10 h-10 rounded bg-purple-500/20 flex items-center justify-center mr-4 text-purple-400">
                   <i class="fas <?php echo ($lesson['type'] == 'quiz' ? 'fa-vial' : 'fa-book-open'); ?>"></i>
                 </div>
                 <div>
@@ -306,14 +306,14 @@ try {
               </div>
 
               <a href="content.php?edit=<?php echo $lesson['id']; ?>"
-                class="opacity-0 group-hover:opacity-100 p-2 text-gray-400 hover:text-while transition-all">
+                class="opacity-0 group-hover:opacity-100 p-2 text-gray-400 hover:text-white transition-all">
                 <i class="fas fa-edit"></i>
               </a>
             </div>
           <?php endforeach; ?>
         </div>
         <a href="content.php"
-          class="block w-full text-center mt-6 p-2 text-xs text-gray-400 hover:text-purple-400 transition-coloers uppercase tracking-widest">
+          class="block w-full text-center mt-6 p-2 text-xs text-gray-400 hover:text-purple-400 transition-colors uppercase tracking-widest">
           Manage All Content
         </a>
       </div>
