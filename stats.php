@@ -19,7 +19,11 @@ $dbPass = '';
 try {
   $pdo = new PDO("mysql:host=$dbHost;dbname=$dbName;charset=utf8mb4", $dbUser, $dbPass);
   $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+  die("Database connection failed: " . $e->getMessage());
+}
 
+try {
   // --- 3. FETCH USER STATS ---
   $userStmt = $pdo->prepare("SELECT xp, streak, accuracy, created_at FROM users WHERE id = ?");
   $userStmt->execute([$user_id]);
