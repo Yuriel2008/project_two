@@ -22,7 +22,7 @@ try {
 
   // --- 3. FETCH USER STATS ---
 
-  $stmt = $pdo->prepare("SELECT username, xp, streak, accuracy FROM users WHERE id = ?");
+  $stmt = $pdo->prepare("SELECT username, xp, streak, accuracy, rank FROM users WHERE id = ?");
   $stmt->execute([$userId]);
   $user = $stmt->fetch(PDO::FETCH_ASSOC);
 

@@ -27,13 +27,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Check credentials (Plaintext as per requirements)
     // Allow login by Username OR Email
-    $stmt = $pdo->prepare("SELECT id, password FROM users WHERE username = ? OR email = ?");
+    $stmt = $pdo->prepare("SELECT id, password, role FROM users WHERE username = ? OR email = ?");
     $stmt->execute([$username, $username]);
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
     if ($user && $user['password'] === $password) {
       // Successful login. Or Success: Set session and redirect
       $_SESSION['user_id'] = $user['id'];
+      $_SESSION['user_role'] = $user['role'];
 
       // Optional: Update last_login timestamp
       $update = $pdo->prepare("UPDATE users SET last_login = NOW() WHERE id = ?");

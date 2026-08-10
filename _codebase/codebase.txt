@@ -1,4 +1,4 @@
-# codebase | 18 files | 2026-08-09 19:43:54
+# codebase | 18 files | 2026-08-10 16:45:29
 
 // 404.php
 <?php 
@@ -2912,7 +2912,7 @@ try {
   $pdo = new PDO("mysql:host=$dbHost;dbname=$dbName;charset=utf8mb4", $dbUser, $dbPass);
   $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
   // --- 3. FETCH USER STATS ---
-  $stmt = $pdo->prepare("SELECT username, xp, streak, accuracy FROM users WHERE id = ?");
+  $stmt = $pdo->prepare("SELECT username, xp, streak, accuracy, rank FROM users WHERE id = ?");
   $stmt->execute([$userId]);
   $user = $stmt->fetch(PDO::FETCH_ASSOC);
   if (!$user) {
@@ -3921,12 +3921,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     // Check credentials (Plaintext as per requirements)
     // Allow login by Username OR Email
-    $stmt = $pdo->prepare("SELECT id, password FROM users WHERE username = ? OR email = ?");
+    $stmt = $pdo->prepare("SELECT id, password, role FROM users WHERE username = ? OR email = ?");
     $stmt->execute([$username, $username]);
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
     if ($user && $user['password'] === $password) {
       // Successful login. Or Success: Set session and redirect
       $_SESSION['user_id'] = $user['id'];
+      $_SESSION['user_role'] = $user['role'];
       // Optional: Update last_login timestamp
       $update = $pdo->prepare("UPDATE users SET last_login = NOW() WHERE id = ?");
       $update->execute([$user['id']]);
