@@ -21,14 +21,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $pass = $_POST['password'] ?? '';
   $confirmPassword = $_POST['confirm-password'] ?? '';
 
-      // Database Connection
-    $dbHost = 'localhost';
-    $dbName = 'lingoflow_db';
-    $dbUser = 'root';
-    $dbPass = '';
+  // Database Connection
+  $dbHost = 'localhost';
+  $dbName = 'lingoflow_db';
+  $dbUser = 'root';
+  $dbPass = '';
 
   try {
     $pdo = new PDO("mysql:host=$dbHost;dbname=$dbName;charset=utf8mb4", $dbUser, $dbPass);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     // Validation
     if (empty($username) || empty($email) || empty($pass)) {
@@ -316,7 +317,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </div>
 
     <!-- Status Placeholder (Populated by PHP) -->
-    <div id="status-box" class="status-msg" style="<?php echo $getMessage ? 'display: flex;': ''; ?>">
+    <div id="status-box" class="status-msg" style="<?php echo $getMessage ? 'display: flex;' : ''; ?>">
       <span id="stat-icon"><?php echo $statusIcon; ?></span>
       <span id="status-text"><?php echo htmlspecialchars($getMessage); ?></span>
     </div>
@@ -326,13 +327,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div class="form-group">
           <label for="username">Username</label>
           <input type="text" name="username" id="username" placeholder="Choose a codename" required
-            autocomplete="username" value="<?php echo isset($_POST['username']) ? htmlspecialchars($_POST['username']) : ''; ?>" />
+            autocomplete="username"
+            value="<?php echo isset($_POST['username']) ? htmlspecialchars($_POST['username']) : ''; ?>" />
         </div>
 
         <div class="form-group">
           <label for="email">Email Address</label>
           <input type="email" name="email" id="email" placeholder="user@example.com" required autocomplete="email"
-            value="<?php echo isset($_POST['email']) ? htmlspecialchars($_POST['email']): ''; ?>" />
+            value="<?php echo isset($_POST['email']) ? htmlspecialchars($_POST['email']) : ''; ?>" />
         </div>
 
         <div class="form-group">
